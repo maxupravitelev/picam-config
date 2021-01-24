@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import configService from "./services/config";
+import React, { useState } from "react";
 
 const UrlForm = ({ callUrl }) => {
 

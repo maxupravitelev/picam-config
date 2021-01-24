@@ -14,10 +14,18 @@ const App = () => {
 
 
   useEffect(() => {
-    configService.getConfig(url).then(config => {
-      console.log(config);
-      setConfig(config);
-    });
+    
+    const getConfig = () => {
+      configService.getConfig(url).then(config => {
+        console.log(config);
+        setConfig(config);
+      });
+    }
+    
+    if (url !== "") {
+      getConfig()
+    }
+
   // eslint-disable-next-line
   }, [url]);
 
@@ -30,7 +38,8 @@ const App = () => {
     setUrl(url)
   }
 
-  console.log(url)
+  console.log("url" + url)
+  console.log("config" + config)
 
   return (
     <div className="App">
