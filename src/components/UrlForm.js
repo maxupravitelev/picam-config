@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
-const UrlForm = ({ callUrl }) => {
+const UrlForm = ({ getStreamUrlFromForm }) => {
+
+    const initValue = {
+        streamUrl: "",
+        configUrl: ""
+      }
 
     // const [url, setUrl] = useState("")
-    const [value, setValue] = useState({
-        text: ""
-      });
+    const [value, setValue] = useState(initValue);
 
 
     const handleSubmit = (e) => {
@@ -13,14 +16,14 @@ const UrlForm = ({ callUrl }) => {
     
         // if (!url) return;
 
-        callUrl(value.text)
+        getStreamUrlFromForm(value)
 
-        setValue("")
+        setValue(initValue)
     }
 
     const handleValue = (e) => {
         let name = e.target.name;
-        // console.log(setColor);
+        // console.log(value);
     
         let newValue = e.target.value;
         setValue({
@@ -35,8 +38,15 @@ const UrlForm = ({ callUrl }) => {
         <input
           type="text"
           className="input"
-          value={value.text}
-          name="text"
+          value={value.streamUrl}
+          name="streamUrl"
+          onChange={handleValue}
+        ></input>
+        <input
+          type="text"
+          className="input"
+          value={value.configUrl}
+          name="configUrl"
           onChange={handleValue}
         ></input>
         <button>
