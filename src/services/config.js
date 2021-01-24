@@ -2,14 +2,17 @@ import axios from "axios";
 
 const configUrl = "http://0.0.0.0:8000/";
 
-export const getConfig = (listId) => {
+const getConfig = async (listId) => {
   const request = axios.get(configUrl + listId);
-  return request.then((response) => response.data);
+  const response = await request;
+    return response.data;
 };
 
-export const setConfig = (newObject) => {
+const setConfig = async (newObject) => {
   const request = axios.post(configUrl, newObject);
   // console.log(newObject)
-  return request.then((response) => response.data);
+  const response = await request;
+    return response.data;
 };
 
+export default { getConfig, setConfig}

@@ -1,42 +1,42 @@
 import './App.css';
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import React, { useState, useEffect } from 'react';
+// import { Formik, Form, Field } from 'formik'
+
+
+import configService from "./services/config"
+
+import UrlForm from "./components/UrlForm"
 
 const App = () => {
+
+  const [config, setConfig] = useState({})
+  const [url, setUrl] = useState("")
+
+
+  useEffect(() => {
+    configService.getConfig(url).then(config => {
+      console.log(config);
+      setConfig(config);
+    });
+  // eslint-disable-next-line
+  }, [url]);
+
+  const callUrl = (url) => {
+
+    configService.getConfig(url).then(config => {
+      setConfig(config)
+    }) 
+
+    setUrl(url)
+  }
+
+  console.log(url)
+
   return (
     <div className="App">
-      <img alt="stream from PiCam" src="http://0.0.0.0:8000/" ></img>
-      {/* <Formik
-       initialValues={{ email: '', password: '' }}
-       validate={values => {
-         const errors = {};
-         if (!values.email) {
-           errors.email = 'Required';
-         } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-         ) {
-           errors.email = 'Invalid email address';
-         }
-         return errors;
-       }}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
-       }}
-     >
-       {({ isSubmitting }) => (
-         <Form>
-           <Field type="email" name="email" />
-           <Field type="password" name="password" />
-           {/* <ErrorMessage name="password" component="div" /> */}
-           <button type="submit" disabled={isSubmitting}>
-             Submit
-           </button>
-         </Form>
-       )}
-     </Formik> */}
+      <UrlForm callUrl={callUrl} />
+      <img alt="stream from PiCam" src={url} ></img>
+      
     </div>
   );
 }
