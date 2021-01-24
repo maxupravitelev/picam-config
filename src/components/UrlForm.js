@@ -33,7 +33,7 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
       };
 
   return (
-    <div>
+    <div className="app">
       <form onSubmit={handleSubmit}>
         <input
           type="text"

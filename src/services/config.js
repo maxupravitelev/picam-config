@@ -11,8 +11,6 @@ const getStream = async (streamUrl) => {
 const getConfig = async (configUrl) => {
   const request = axios.get(configUrl);
   const response = await request;
-  console.log(response.data)
-
     return response.data;
 };
 

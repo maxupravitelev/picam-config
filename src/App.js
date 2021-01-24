@@ -7,7 +7,7 @@ import configService from "./services/config";
 import UrlForm from "./components/UrlForm";
 
 const App = () => {
-  const [config, setConfig] = useState({});
+  const [config, setConfig] = useState(null);
   const [configUrl, setConfigUrl] = useState("");
 
   const [streamUrl, setStreamUrl] = useState("");
@@ -25,7 +25,7 @@ const App = () => {
     }
 
     // eslint-disable-next-line
-  }, [configUrl]);
+  }, [config]);
 
   const getStreamUrlFromForm = (url) => {
     setConfigUrl(url.configUrl);
@@ -36,9 +36,13 @@ const App = () => {
   // console.log("url" + streamUrl)
   // console.log("config" + config)
 
+  if (!configUrl) return <UrlForm getStreamUrlFromForm={getStreamUrlFromForm} />
+  else {
+
+
+
   return (
     <div className="App">
-      <UrlForm getStreamUrlFromForm={getStreamUrlFromForm} />
       <img alt="stream from PiCam" src={streamUrl}></img>
       <p>
         Get config file: <a href={configUrl}>FILE</a>
@@ -46,5 +50,6 @@ const App = () => {
     </div>
   );
 };
+}
 
 export default App;
