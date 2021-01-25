@@ -12,33 +12,33 @@ body {
 }
 
 .item {
-   /* background: #fff; */
-   box-shadow: 1px 1px 1px #ccc;
-   padding: 3px 10px;
- font-size: 1em;
-   margin-bottom: 6px;
-   border-radius: 3px;
-   display: flex;
-   align-items: center;
- justify-content: space-between;
- }
-
-form {
- display: block;
- justify-content: space-between;
+  /* background: #fff; */
+  box-shadow: 1px 1px 1px #ccc;
+  padding: 3px 10px;
+  font-size: 1em;
+  margin-bottom: 6px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-input[type=number]{
- width: 10%;
- border: 1px solid #ccc;
- padding: 6px 0px 6px;
-} 
+form {
+  display: block;
+  justify-content: space-between;
+}
 
-input[type=text]{
- width: 88%;
- border: 1px solid #ccc;
- padding: 6px 0px 6px;
-} 
+input[type="number"] {
+  width: 10%;
+  border: 1px solid #ccc;
+  padding: 6px 0px 6px;
+}
+
+input[type="text"] {
+  width: 88%;
+  border: 1px solid #ccc;
+  padding: 6px 0px 6px;
+}
 
 .editButtons {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
@@ -50,33 +50,32 @@ input[type=text]{
 }
 
 button {
- height: 100%;
- border: none;
- border-radius: 3px;
- color: #fff;
- background-color: #333;
- font-size: 0.85em;
-   padding: 8px 18px 6px 18px;
-} 
+  height: 100%;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #333;
+  font-size: 0.85em;
+  padding: 8px 18px 6px 18px;
+}
 
 #share-button {
-   top: 10%;
-   display: flex;
- justify-content: center; 
- width: 100%;
+  top: 10%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 :focus {
-   outline: 3px solid red;   
+  outline: 3px solid red;
 }
 
 button:hover {
   opacity: 0.9;
 }
 
-
 #addButton {
-   width: 60%; 
-   display: block; 
-   margin: 2em auto 
+  width: 60%;
+  display: block;
+  margin: 2em auto;
 }

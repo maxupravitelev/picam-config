@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import configService from "../services/config";
 
-const UrlForm = ({ getStreamUrlFromForm }) => {
+
+const UrlForm = ({ config, getStreamUrlFromForm }) => {
 
     const initValue = {
         streamUrl: "",
@@ -10,15 +12,19 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
     // const [url, setUrl] = useState("")
     const [value, setValue] = useState(initValue);
 
+      if (config) return <div></div>
 
-    const handleSubmit = (e) => {
+      console.log(value)
+    const handleSubmit = async (e) => {
         e.preventDefault();
     
         // if (!url) return;
+        let config = await configService.getConfig(value.configUrl)
 
-        getStreamUrlFromForm(value)
 
-        setValue(initValue)
+        getStreamUrlFromForm(value, config)
+
+        // setValue(initValue)
     }
 
     const handleValue = (e) => {
