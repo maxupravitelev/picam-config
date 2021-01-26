@@ -2,19 +2,49 @@ import React, { useState } from "react";
 import configService from "../services/config";
 
 const ConfigList = ({ config, configUrl }) => {
-    const initValues = {
-        framerate: ""
+    let initValues = {
+        awb_gains: ""
       }
   
     const [value, setValue] = useState(initValues);
+
+    console.log(value)
+
+    if (config) {
+        let config_keys = Object.keys(config.picam_config)
+        console.log(config_keys)
+        
+        
+
+        for (let i = 0; i < config_keys.length; i++) {
+            let newKey = config_keys[i]
+            initValues = {
+                ...initValues,
+                [newKey]: ""
+            } 
+        }
+        // setValue(initValues)
+
+    }
+
+    // {config.picam_config.map(input => {
+        
+    //     key 
+
+    //     setValue({
+    //         ...value,
+    //         [key]: newValue,
+    //       });
+    // }
+    // )}
 
     // console.log(config)
     // console.log(configUrl)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    config.framerate = value.framerate
+    console.log(value.awb_gains)
+    config.picam_config.awb_gains = parseFloat(value.awb_gains)
 
     configService.setConfig(configUrl, config)
 
@@ -37,12 +67,26 @@ const ConfigList = ({ config, configUrl }) => {
     <div>
       <div className="app">
         <form onSubmit={handleSubmit}>
+          
+          {/* {config.picam_config.map(input => (
+              <input
+                type="text"
+                classname="input"
+                value={}
+              >
+                
+              </input>
+          )
+          )} */}
+          
           <input
             type="number"
-            // default={config.framerate}
+            // default={config.awb_gains}            
+            // placeholder={config.awb_gains}
+
             className="input"
-            value={value.framerate}
-            name="framerate"
+            value={value.awb_gains}
+            name="awb_gains"
             onChange={handleValue}
           ></input>
           <button>Submit</button>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import configService from "../services/config";
 
 
-const UrlForm = ({ config, getStreamUrlFromForm }) => {
+const UrlForm = ({ getStreamUrlFromForm }) => {
 
     const initValue = {
         streamUrl: "",
@@ -12,9 +12,6 @@ const UrlForm = ({ config, getStreamUrlFromForm }) => {
     // const [url, setUrl] = useState("")
     const [value, setValue] = useState(initValue);
 
-      if (config) return <div></div>
-
-      console.log(value)
     const handleSubmit = async (e) => {
         e.preventDefault();
     
