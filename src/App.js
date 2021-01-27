@@ -25,13 +25,13 @@ const App = () => {
   //   // eslint-disable-next-line
   // }, [config]);
 
-  const getStreamUrlFromForm = (url, configO) => {
+  const getStreamUrlFromForm = (url, configObject) => {
     setConfigUrl(url.configUrl);
     // console.log(configUrl)
-    setStreamUrl(url.streamUrl);        {/* <UrlForm config={config} getStreamUrlFromForm={getStreamUrlFromForm} /> */}
+    setStreamUrl(url.streamUrl);     
 
     // console.log(streamUrl)
-    setConfig(configO)
+    setConfig(configObject)
   };
 
   // console.log("url" + streamUrl)

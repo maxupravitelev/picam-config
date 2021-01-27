@@ -1,52 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import configService from "../services/config";
 
 const ConfigList = ({ config, configUrl }) => {
-    let initValues = {
-        awb_gains: ""
-      }
-  
-    const [value, setValue] = useState(initValues);
+  let initValues = {
+    awb_gains: "",
+  };
 
-    console.log(value)
+  const [value, setValue] = useState(initValues);
+  const [configKeys, setConfigKeys] = useState(null);
+
+  // console.log(value);
+
+  useEffect(() => {
+    const setKeys = () => {
+      let configKeys = Object.keys(config.picam_config);
+      setConfigKeys(configKeys);
+
+      for (let i = 0; i < configKeys.length; i++) {
+        let newKey = configKeys[i];
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        initValues = {
+          ...initValues,
+          [newKey]: "",
+        };
+      }
+      setValue(initValues);
+    };
 
     if (config) {
-        let config_keys = Object.keys(config.picam_config)
-        console.log(config_keys)
-        
-        
-
-        for (let i = 0; i < config_keys.length; i++) {
-            let newKey = config_keys[i]
-            initValues = {
-                ...initValues,
-                [newKey]: ""
-            } 
-        }
-        // setValue(initValues)
-
+      setKeys();
     }
+  }, [config]);
 
-    // {config.picam_config.map(input => {
-        
-    //     key 
+  // console.log(configKeys);
+  //   console.log(value);
 
-    //     setValue({
-    //         ...value,
-    //         [key]: newValue,
-    //       });
-    // }
-    // )}
-
-    // console.log(config)
-    // console.log(configUrl)
+  if (!configKeys) return <div></div>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(value.awb_gains)
-    config.picam_config.awb_gains = parseFloat(value.awb_gains)
+    config.picam_config.awb_gains = parseFloat(value.awb_gains);
 
-    configService.setConfig(configUrl, config)
+    configService.setConfig(configUrl, config);
 
     setValue(initValues);
   };
@@ -62,37 +57,29 @@ const ConfigList = ({ config, configUrl }) => {
     });
   };
 
-
   return (
-    <div>
       <div className="app">
         <form onSubmit={handleSubmit}>
-          
-          {/* {config.picam_config.map(input => (
+          {configKeys.map((key, index) => (
+            <div id={"div"+key+index}>
+              <p id={"p"+key+index}>{key}</p>
               <input
                 type="text"
-                classname="input"
-                value={}
+                id={"input"+key+index}
+                default={config[key]}
+                placeholder={config[key]}
+                className="input"
+                value={value[key]}
+                name={key}
+                onChange={handleValue}
               >
-                
               </input>
-          )
-          )} */}
-          
-          <input
-            type="number"
-            // default={config.awb_gains}            
-            // placeholder={config.awb_gains}
+            </div>
+          ))}
 
-            className="input"
-            value={value.awb_gains}
-            name="awb_gains"
-            onChange={handleValue}
-          ></input>
           <button>Submit</button>
         </form>
       </div>
-    </div>
   );
 };
 
