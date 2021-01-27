@@ -59,6 +59,9 @@ const ConfigList = ({ config, configUrl }) => {
 
   return (
       <div className="app">
+        <p>
+          <a href={configUrl}>View config file on server</a>
+        </p>
         <form onSubmit={handleSubmit}>
           {configKeys.map((key, index) => (
             <div id={"div"+key+index}>
@@ -66,8 +69,8 @@ const ConfigList = ({ config, configUrl }) => {
               <input
                 type="text"
                 id={"input"+key+index}
-                default={config[key]}
-                placeholder={config[key]}
+                default={config.picam_config[key]}
+                placeholder={config.picam_config[key]}
                 className="input"
                 value={value[key]}
                 name={key}
@@ -79,6 +82,7 @@ const ConfigList = ({ config, configUrl }) => {
 
           <button>Submit</button>
         </form>
+
       </div>
   );
 };

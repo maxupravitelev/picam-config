@@ -43,9 +43,7 @@ const App = () => {
     return (
       <div className="App">
         <img alt="stream from PiCam" src={streamUrl}></img>
-        <p>
-          Get config file: <a href={configUrl}>FILE</a>
-        </p>
+
         <ConfigList config={config} configUrl={configUrl} />
       </div>
     );

@@ -8,7 +8,17 @@ body {
   background-color: #fff;
   max-width: 20em;
   margin: auto;
+}
+
+img {
+  border-radius: 40px;
+  padding: 2.3em;
+  background-color: #fff;
+  max-width: 20em;
+  margin: auto;
   margin-top: 5em;
+  display: flex;
+  align-items: center;
 }
 
 .item {
