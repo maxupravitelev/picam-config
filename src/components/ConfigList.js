@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from "react";
 import configService from "../services/config";
 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Paper,
+  TextField,
+  Button,
+  List,
+  ListItem,
+} from "@material-ui/core";
+
 const ConfigList = ({ config, configUrl }) => {
   let initValues = {
     awb_gains: "",
@@ -58,32 +71,45 @@ const ConfigList = ({ config, configUrl }) => {
   };
 
   return (
-      <div className="app">
-        <p>
-          <a href={configUrl}>View config file on server</a>
-        </p>
-        <form onSubmit={handleSubmit}>
-          {configKeys.map((key, index) => (
-            <div id={"div"+key+index}>
-              <p id={"p"+key+index}>{key}</p>
-              <input
-                type="text"
-                id={"input"+key+index}
-                default={config.picam_config[key]}
-                placeholder={config.picam_config[key]}
-                className="input"
-                value={value[key]}
-                name={key}
-                onChange={handleValue}
-              >
-              </input>
-            </div>
-          ))}
+    <div className="app">
+      <p>
+        <a href={configUrl}>View config file on server</a>
+      </p>
+      <form onSubmit={handleSubmit}>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+        {configKeys.map((key, index) => (
+          // <div id={"div" + key + index}>
+            <TableRow id={"p" + key + index}>
+                              <TableCell>
+                  {configKeys[index]}
+                </TableCell>
+                            <TableCell>
 
-          <button>Submit</button>
-        </form>
+            <TextField
+              type="text"
+              id={"input" + key + index}
+              default={config.picam_config[key]}
+              placeholder={config.picam_config[key]}
+              className="input"
+              value={value[key]}
+              name={key}
+              onChange={handleValue}
+            />
+                            </TableCell>
 
-      </div>
+          {/* </div> */}
+          </TableRow>
+        ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+        <Button variant="contained" color="primary">
+          SET
+        </Button>
+      </form>
+    </div>
   );
 };
 

@@ -38,7 +38,7 @@ form {
   justify-content: space-between;
 }
 
-input[type="number"] {
+/* input[type="number"] {
   width: 10%;
   border: 1px solid #ccc;
   padding: 6px 0px 6px;
@@ -48,7 +48,7 @@ input[type="text"] {
   width: 88%;
   border: 1px solid #ccc;
   padding: 6px 0px 6px;
-}
+} */
 
 .editButtons {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
