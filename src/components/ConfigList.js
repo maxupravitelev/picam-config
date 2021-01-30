@@ -8,11 +8,15 @@ import {
   TableContainer,
   TableRow,
   Paper,
-  TextField,
+  // TextField,
   Button,
-  List,
-  ListItem,
+  // List,
+  // ListItem,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const ConfigList = ({ config, configUrl }) => {
   let initValues = {
@@ -76,38 +80,49 @@ const ConfigList = ({ config, configUrl }) => {
         <a href={configUrl}>View config file on server</a>
       </p>
       <form onSubmit={handleSubmit}>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableBody>
-        {configKeys.map((key, index) => (
-          // <div id={"div" + key + index}>
-            <TableRow id={"p" + key + index}>
-                              <TableCell>
-                  {configKeys[index]}
-                </TableCell>
-                            <TableCell>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+          <p>PiCam Config</p>
+          </AccordionSummary>
+          <AccordionDetails>
+          
+            <TableContainer component={Paper}>
+              <Table>
+                <TableBody>
+                  {configKeys.map((key, index) => (
+                    // <div id={"div" + key + index}>
+                    <TableRow id={"p" + key + index}>
+                      <TableCell>{configKeys[index]}</TableCell>
+                      <TableCell>
+                        {/* <TextField */}
+                        <input
+                          type="text"
+                          id={"input" + key + index}
+                          default={config.picam_config[key]}
+                          placeholder={config.picam_config[key]}
+                          className="input"
+                          value={value[key]}
+                          name={key}
+                          onChange={handleValue}
+                        />
+                      </TableCell>
 
-            <TextField
-              type="text"
-              id={"input" + key + index}
-              default={config.picam_config[key]}
-              placeholder={config.picam_config[key]}
-              className="input"
-              value={value[key]}
-              name={key}
-              onChange={handleValue}
-            />
-                            </TableCell>
-
-          {/* </div> */}
-          </TableRow>
-        ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-        <Button variant="contained" color="primary">
-          SET
-        </Button>
+                      {/* </div> */}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <Button color="primary">
+              SET
+            </Button>
+            </AccordionDetails>
+          
+        </Accordion>
       </form>
     </div>
   );

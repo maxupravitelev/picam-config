@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import configService from "../services/config";
 
+import {
+  TextField,
+  Button,
+
+} from "@material-ui/core";
+
 
 const UrlForm = ({ getStreamUrlFromForm }) => {
 
@@ -38,23 +44,26 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
   return (
     <div className="app">
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
           type="text"
           className="input"
           value={value.streamUrl}
           name="streamUrl"
+          variant="filled" 
           onChange={handleValue}
-        ></input>
-        <input
+        />
+        <TextField
           type="text"
           className="input"
           value={value.configUrl}
           name="configUrl"
+          variant="filled" 
           onChange={handleValue}
-        ></input>
-        <button>
+        />
+        <p></p>
+        <Button color="primary">
             Submit
-        </button>
+        </Button>
       </form>
     </div>
   );
