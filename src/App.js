@@ -1,7 +1,7 @@
 import "./App.css";
-import React, { 
-  useState, 
-  // useEffect 
+import React, {
+  useState,
+  // useEffect
 } from "react";
 // import { Formik, Form, Field } from 'formik'
 
@@ -9,6 +9,9 @@ import React, {
 
 import UrlForm from "./components/UrlForm";
 import ConfigList from "./components/ConfigList";
+
+import Header from "./components/Header";
+import Capture from "./components/Capture";
 
 const App = () => {
   const [config, setConfig] = useState(null);
@@ -28,21 +31,27 @@ const App = () => {
   const getStreamUrlFromForm = (url, configObject) => {
     setConfigUrl(url.configUrl);
     // console.log(configUrl)
-    setStreamUrl(url.streamUrl);     
+    setStreamUrl(url.streamUrl);
 
     // console.log(streamUrl)
-    setConfig(configObject)
+    setConfig(configObject);
   };
 
   // console.log("url" + streamUrl)
   // console.log("config" + config)
 
   if (!configUrl)
-    return <UrlForm getStreamUrlFromForm={getStreamUrlFromForm} />;
+    return (
+      <div>
+        <Header />
+        <UrlForm getStreamUrlFromForm={getStreamUrlFromForm} />
+      </div>
+    );
   else {
     return (
       <div className="App">
-        <img alt="stream from PiCam" src={streamUrl}></img>
+        <Header />
+        <Capture streamUrl={streamUrl} />
 
         <ConfigList config={config} configUrl={configUrl} />
       </div>
@@ -50,4 +59,4 @@ const App = () => {
   }
 };
 
-export default App;
+export default App

@@ -18,15 +18,18 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+import ConfigFormField from "../components/ConfigFormField";
+
+
 const ConfigList = ({ config, configUrl }) => {
-  let initValues = {
+  let initFormFields = {
     awb_gains: "",
   };
 
-  const [value, setValue] = useState(initValues);
+  const [formField, setformField] = useState(initFormFields);
   const [configKeys, setConfigKeys] = useState(null);
 
-  // console.log(value);
+  // console.log(formField);
 
   useEffect(() => {
     const setKeys = () => {
@@ -36,12 +39,12 @@ const ConfigList = ({ config, configUrl }) => {
       for (let i = 0; i < configKeys.length; i++) {
         let newKey = configKeys[i];
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        initValues = {
-          ...initValues,
+        initFormFields = {
+          ...initFormFields,
           [newKey]: "",
         };
       }
-      setValue(initValues);
+      setformField(initFormFields);
     };
 
     if (config) {
@@ -50,27 +53,27 @@ const ConfigList = ({ config, configUrl }) => {
   }, [config]);
 
   // console.log(configKeys);
-  //   console.log(value);
+  //   console.log(formField);
 
   if (!configKeys) return <div></div>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    config.picam_config.awb_gains = parseFloat(value.awb_gains);
+    config.picam_config.awb_gains = parseFloat(formField.awb_gains);
 
     configService.setConfig(configUrl, config);
 
-    setValue(initValues);
+    setformField(initFormFields);
   };
 
-  const handleValue = (e) => {
+  const handleformField = (e) => {
     let name = e.target.name;
-    // console.log(value);
+    // console.log(formField);
 
-    let newValue = e.target.value;
-    setValue({
-      ...value,
-      [name]: newValue,
+    let newformField = e.target.value;
+    setformField({
+      ...formField,
+      [name]: newformField,
     });
   };
 
@@ -98,17 +101,20 @@ const ConfigList = ({ config, configUrl }) => {
                     <TableRow id={"p" + key + index}>
                       <TableCell>{configKeys[index]}</TableCell>
                       <TableCell>
+                        <ConfigFormField id={"input" + key + index} currentFieldValue={config.picam_config[key]} value={formField[key]}                           
+                         name={key}
+                          onChange={handleformField}/>
                         {/* <TextField */}
-                        <input
-                          type="text"
-                          id={"input" + key + index}
-                          default={config.picam_config[key]}
-                          placeholder={config.picam_config[key]}
+                        {/* <input
+                          // type="text"
+                          // id={"input" + key + index}
+                          // default={config.picam_config[key]}
+                          // placeholder={config.picam_config[key]}
                           className="input"
-                          value={value[key]}
+                          value={formField[key]}
                           name={key}
-                          onChange={handleValue}
-                        />
+                          onChange={handleformField}
+                        /> */}
                       </TableCell>
 
                       {/* </div> */}

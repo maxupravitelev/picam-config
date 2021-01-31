@@ -20,7 +20,7 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         // if (!url) return;
         let config = await configService.getConfig(value.configUrl)
 
@@ -49,7 +49,6 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
           className="input"
           value={value.streamUrl}
           name="streamUrl"
-          variant="filled" 
           onChange={handleValue}
         />
         <TextField
@@ -57,13 +56,14 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
           className="input"
           value={value.configUrl}
           name="configUrl"
-          variant="filled" 
           onChange={handleValue}
         />
-        <p></p>
-        <Button color="primary">
+        {/* <Button variant="contained" color="primary">
             Submit
-        </Button>
+        </Button> */}
+        <button>
+            Submit
+        </button>
       </form>
     </div>
   );
