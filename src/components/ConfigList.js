@@ -19,6 +19,7 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import ConfigFormField from "../components/ConfigFormField";
+import ConfigSection from "../components/ConfigSection";
 
 
 const ConfigList = ({ config, configUrl }) => {
@@ -26,13 +27,16 @@ const ConfigList = ({ config, configUrl }) => {
     awb_gains: "",
   };
 
-  const [formField, setformField] = useState(initFormFields);
+  const [formField, setFormField] = useState(initFormFields);
   const [configKeys, setConfigKeys] = useState(null);
-
+  const [configSections, setConfigSections] = useState(null);
   // console.log(formField);
 
   useEffect(() => {
     const setKeys = () => {
+      let sections = Object.keys(config);
+      setConfigSections(sections);
+
       let configKeys = Object.keys(config.picam_config);
       setConfigKeys(configKeys);
 
@@ -44,7 +48,7 @@ const ConfigList = ({ config, configUrl }) => {
           [newKey]: "",
         };
       }
-      setformField(initFormFields);
+      setFormField(initFormFields);
     };
 
     if (config) {
@@ -55,7 +59,7 @@ const ConfigList = ({ config, configUrl }) => {
   // console.log(configKeys);
   //   console.log(formField);
 
-  if (!configKeys) return <div></div>;
+  if (!configKeys) return <div></div>
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,15 +67,15 @@ const ConfigList = ({ config, configUrl }) => {
 
     configService.setConfig(configUrl, config);
 
-    setformField(initFormFields);
+    setFormField(initFormFields);
   };
 
-  const handleformField = (e) => {
+  const handleFormField = (e) => {
     let name = e.target.name;
     // console.log(formField);
 
     let newformField = e.target.value;
-    setformField({
+    setFormField({
       ...formField,
       [name]: newformField,
     });
@@ -83,16 +87,34 @@ const ConfigList = ({ config, configUrl }) => {
         <a href={configUrl}>View config file on server</a>
       </p>
       <form onSubmit={handleSubmit}>
+        {configSections.map((sectionKey) => (
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <p>{sectionKey}</p>
+            </AccordionSummary>
+            <AccordionDetails>
+            <ConfigSection 
+                config={config}
+                configSection={sectionKey}
+                handleFormField={handleFormField}
+                />
+              
+            </AccordionDetails>
+          </Accordion>
+        ))}
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-          <p>PiCam Config</p>
+            <p>PiCam Config</p>
           </AccordionSummary>
           <AccordionDetails>
-          
             <TableContainer component={Paper}>
               <Table>
                 <TableBody>
@@ -101,9 +123,13 @@ const ConfigList = ({ config, configUrl }) => {
                     <TableRow id={"p" + key + index}>
                       <TableCell>{configKeys[index]}</TableCell>
                       <TableCell>
-                        <ConfigFormField id={"input" + key + index} currentFieldValue={config.picam_config[key]} value={formField[key]}                           
-                         name={key}
-                          onChange={handleformField}/>
+                        <ConfigFormField
+                          id={"input" + key + index}
+                          currentFieldValue={config.picam_config[key]}
+                          value={formField[key]}
+                          name={key}
+                          onChange={handleFormField}
+                        />
                         {/* <TextField */}
                         {/* <input
                           // type="text"
@@ -113,7 +139,7 @@ const ConfigList = ({ config, configUrl }) => {
                           className="input"
                           value={formField[key]}
                           name={key}
-                          onChange={handleformField}
+                          onChange={handleFormField}
                         /> */}
                       </TableCell>
 
@@ -123,11 +149,21 @@ const ConfigList = ({ config, configUrl }) => {
                 </TableBody>
               </Table>
             </TableContainer>
-            <Button color="primary">
-              SET
-            </Button>
-            </AccordionDetails>
-          
+            {configSections.map((key) => (
+              <div>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <p>{key}</p>
+                </AccordionSummary>
+                <AccordionDetails></AccordionDetails>
+              </div>
+            ))}
+
+            <Button color="primary">SET</Button>
+          </AccordionDetails>
         </Accordion>
       </form>
     </div>
