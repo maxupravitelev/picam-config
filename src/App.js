@@ -5,13 +5,14 @@ import React, {
 } from "react";
 // import { Formik, Form, Field } from 'formik'
 
-// import configService from "./services/config";
+// import configService from "./services/config"
 
 import UrlForm from "./components/UrlForm";
 import ConfigList from "./components/ConfigList";
 
 import Header from "./components/Header";
 import Capture from "./components/Capture";
+
 
 const App = () => {
   const [config, setConfig] = useState(null);
@@ -59,4 +60,4 @@ const App = () => {
   }
 };
 
-export default App
+export default App;
