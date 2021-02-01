@@ -18,7 +18,6 @@ import {
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import ConfigFormField from '../components/ConfigFormField'
 import ConfigSection from '../components/ConfigSection'
 
 const ConfigList = ({ config, configUrl, setConfig }) => {
@@ -44,11 +43,9 @@ const ConfigList = ({ config, configUrl, setConfig }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    config.picam_config.awb_gains = parseFloat(formField.awb_gains)
 
     configService.setConfig(configUrl, config)
 
-    setFormField(initFormFields)
   }
 
   return (
