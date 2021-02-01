@@ -1,54 +1,48 @@
-import React, { useState } from "react";
-import configService from "../services/config";
+import React, { useState } from 'react'
+import configService from '../services/config'
 
-import { 
-  TextField, 
-  Button 
-} from "@material-ui/core";
+import { TextField, Button } from '@material-ui/core'
 
-import dummy_config from "../demo_mode/config";
-
+import dummy_config from '../demo_mode/config'
 
 const UrlForm = ({ getStreamUrlFromForm }) => {
   const initValue = {
-    streamUrl: "",
-    configUrl: "",
-  };
+    streamUrl: '',
+    configUrl: '',
+  }
 
   // const [url, setUrl] = useState("")
-  const [value, setValue] = useState(initValue);
+  const [value, setValue] = useState(initValue)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // if (!url) return;
-    let config = await configService.getConfig(value.configUrl);
+    let config = await configService.getConfig(value.configUrl)
 
-    getStreamUrlFromForm(value, config);
+    getStreamUrlFromForm(value, config)
 
     // setValue(initValue)
-  };
+  }
 
   const handleValue = (e) => {
-    let name = e.target.name;
+    let name = e.target.name
     // console.log(value);
 
-    let newValue = e.target.value;
+    let newValue = e.target.value
     setValue({
       ...value,
       [name]: newValue,
-    });
-  };
+    })
+  }
 
-  const handleDemoMode = () =>{
-
+  const handleDemoMode = () => {
     const dummy_values = {
-      streamUrl: "dummy_url",
-      configUrl: "dummy_config",
-    };
+      streamUrl: 'dummy_url',
+      configUrl: 'dummy_config',
+    }
 
-    getStreamUrlFromForm(dummy_values, dummy_config);
-
+    getStreamUrlFromForm(dummy_values, dummy_config)
   }
 
   return (
@@ -68,17 +62,20 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
           name="configUrl"
           onChange={handleValue}
         />
-        {/* <Button variant="contained" color="primary">
+        <Button 
+          type="submit"
+          variant="outlined">
             Submit
-        </Button> */}
-        <button>Submit</button>
+        </Button>
+        {/* <button>Submit</button> */}
       </form>
-      <button
-        onClick={handleDemoMode}>
-        Start DEMO
-        </button>
+      <Button variant="outlined"
+        onClick={handleDemoMode}
+        >
+          Start DEMO
+          </Button>
     </div>
-  );
-};
+  )
+}
 
-export default UrlForm;
+export default UrlForm

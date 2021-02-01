@@ -1,16 +1,21 @@
-import React from "react";
+import React from 'react'
 // import { Typography } from "@material-ui/core";
 
-const ConfigFormField = ({ fieldValue, handleFormField, name, value, currentFieldValue }) => {
-
-  let formFieldType = "text"
+const ConfigFormField = ({
+  fieldValue,
+  handleFormField,
+  name,
+  value,
+  currentFieldValue,
+}) => {
+  let formFieldType = 'text'
 
   if (typeof fieldValue == 'number') {
-      formFieldType = 'number'
+    formFieldType = 'number'
   }
 
   return (
-    <div className="header">
+    <div className="configFormField">
       <input
         type={formFieldType}
         default={currentFieldValue}
@@ -21,7 +26,7 @@ const ConfigFormField = ({ fieldValue, handleFormField, name, value, currentFiel
         onChange={handleFormField}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ConfigFormField;
+export default ConfigFormField

@@ -1,45 +1,29 @@
-import "./App.css";
+import './App.css'
 import React, {
   useState,
   // useEffect
-} from "react";
+} from 'react'
 // import { Formik, Form, Field } from 'formik'
 
 // import configService from "./services/config"
 
-import UrlForm from "./components/UrlForm";
-import ConfigList from "./components/ConfigList";
+import UrlForm from './components/UrlForm'
+import ConfigList from './components/ConfigList'
 
-import Header from "./components/Header";
-import Capture from "./components/Capture";
-
+import Header from './components/Header'
+import Capture from './components/Capture'
 
 const App = () => {
-  const [config, setConfig] = useState(null);
-  const [configUrl, setConfigUrl] = useState("");
+  const [config, setConfig] = useState(null)
+  const [configUrl, setConfigUrl] = useState('')
 
-  const [streamUrl, setStreamUrl] = useState("");
-
-  // useEffect(() => {
-  //     configService.getConfig(configUrl).then((config) => {
-  //       console.log(config);
-  //       setConfig(config);
-  //     });
-
-  //   // eslint-disable-next-line
-  // }, [config]);
+  const [streamUrl, setStreamUrl] = useState('')
 
   const getStreamUrlFromForm = (url, configObject) => {
-    setConfigUrl(url.configUrl);
-    // console.log(configUrl)
-    setStreamUrl(url.streamUrl);
-
-    // console.log(streamUrl)
-    setConfig(configObject);
-  };
-
-  // console.log("url" + streamUrl)
-  // console.log("config" + config)
+    setConfigUrl(url.configUrl)
+    setStreamUrl(url.streamUrl)
+    setConfig(configObject)
+  }
 
   if (!configUrl)
     return (
@@ -47,7 +31,7 @@ const App = () => {
         <Header />
         <UrlForm getStreamUrlFromForm={getStreamUrlFromForm} />
       </div>
-    );
+    )
   else {
     return (
       <div className="App">
@@ -56,8 +40,8 @@ const App = () => {
 
         <ConfigList config={config} configUrl={configUrl} />
       </div>
-    );
+    )
   }
-};
+}
 
-export default App;
+export default App
