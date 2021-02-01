@@ -38,7 +38,7 @@ const App = () => {
         <Header />
         <Capture streamUrl={streamUrl} />
 
-        <ConfigList config={config} configUrl={configUrl} />
+        <ConfigList config={config} configUrl={configUrl} setConfig={setConfig}/>
       </div>
     )
   }

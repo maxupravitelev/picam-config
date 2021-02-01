@@ -22,14 +22,13 @@ import {
 
 import ConfigFormField from '../components/ConfigFormField'
 
-const ConfigSection = ({ config, configSection, handleFormField }) => {
+const ConfigSection = ({ config, configSection, setConfig }) => {
   let initFormFields = {
     // awb_gains: '',
   }
 
   const [formFields, setFormFields] = useState(initFormFields)
   const [configKeys, setConfigKeys] = useState(null)
-  const [currentSection, setCurrentSection] = useState(null)
 
   useEffect(() => {
     const setKeys = () => {
@@ -64,17 +63,20 @@ const ConfigSection = ({ config, configSection, handleFormField }) => {
         <Table>
           <TableBody>
             {configKeys.map((key, index) => {
-              console.log(config[configSection][key])
+              // console.log(config[configSection][key])
               return (
                 <TableRow key={key + "TableRow" + index}>
                   <TableCell
                   >{key}</TableCell>
                   <TableCell>
                     <ConfigFormField
+                      config={config}
                       currentFieldValue={config[configSection][key]}
+                      currentSection={configSection}
                       value={formFields[key]}
                       name={key}
-                      onChange={handleFormField}
+                      // onChange={handleFormField}
+                      setConfig={setConfig}
                     />
                   </TableCell>
                 </TableRow>
