@@ -86,8 +86,8 @@ const ConfigList = ({ config, configUrl }) => {
         <a href={configUrl}>View config file on server</a>
       </p>
       <form onSubmit={handleSubmit}>
-        {configSections.map((sectionKey) => (
-          <Accordion>
+        {configSections.map((sectionKey, index) => (
+          <Accordion key={sectionKey + "Accordion" + index}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -95,7 +95,8 @@ const ConfigList = ({ config, configUrl }) => {
             >
               <p>{sectionKey}</p>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails
+              >
               <ConfigSection
                 config={config}
                 configSection={sectionKey}

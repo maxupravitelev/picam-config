@@ -21,7 +21,7 @@ const ConfigFormField = ({
         default={currentFieldValue}
         placeholder={currentFieldValue}
         className="input"
-        formField={value}
+        value={value[value]}
         name={name}
         onChange={handleFormField}
       />

@@ -24,11 +24,12 @@ import ConfigFormField from '../components/ConfigFormField'
 
 const ConfigSection = ({ config, configSection, handleFormField }) => {
   let initFormFields = {
-    awb_gains: '',
+    // awb_gains: '',
   }
 
   const [formFields, setFormFields] = useState(initFormFields)
   const [configKeys, setConfigKeys] = useState(null)
+  const [currentSection, setCurrentSection] = useState(null)
 
   useEffect(() => {
     const setKeys = () => {
@@ -50,10 +51,10 @@ const ConfigSection = ({ config, configSection, handleFormField }) => {
     }
   }, [config])
 
-  console.log(config)
-  console.log(configSection)
-  console.log(formFields)
-  console.log(configKeys)
+  // console.log(config)
+  // console.log(configSection)
+  // console.log(formFields)
+  // console.log(configKeys)
 
   if (!configKeys) return <div></div>
 
@@ -63,16 +64,14 @@ const ConfigSection = ({ config, configSection, handleFormField }) => {
         <Table>
           <TableBody>
             {configKeys.map((key, index) => {
-              console.log(config[key])
+              console.log(config[configSection][key])
               return (
-                <TableRow id={'p' + key + index}>
-                  {/* <TableCell>{config[sectionKey][key]}</TableCell> */}
-
-                  <TableCell>{configKeys[index]}</TableCell>
+                <TableRow key={key + "TableRow" + index}>
+                  <TableCell
+                  >{key}</TableCell>
                   <TableCell>
                     <ConfigFormField
-                      id={'input' + key + index}
-                      currentFieldValue={config.picam_config[key]}
+                      currentFieldValue={config[configSection][key]}
                       value={formFields[key]}
                       name={key}
                       onChange={handleFormField}
