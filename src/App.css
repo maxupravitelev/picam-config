@@ -17,6 +17,14 @@ body {
   text-align: center;
 }
 
+img {
+  padding: 2.3em;
+  background-color: #fff;
+  max-width: 30em;
+  margin: auto;
+  /* border: 3px solid; */
+}
+
 .configSection {
   margin: auto
 }

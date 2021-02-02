@@ -16,14 +16,16 @@ import Capture from './components/Capture'
 const App = () => {
   const [config, setConfig] = useState(null)
   const [configUrl, setConfigUrl] = useState('')
-
   const [streamUrl, setStreamUrl] = useState('')
+  const [positionUrl, setPositionUrl] = useState('')
 
-  const getStreamUrlFromForm = (url, configObject) => {
-    console.log(url)
-    setConfigUrl(url.configUrl)
-    setStreamUrl(url.streamUrl)
-    setConfig(configObject)
+
+  const getStreamUrlFromForm = (urls, configJson) => {
+
+    setConfigUrl(urls.configUrl)
+    setStreamUrl(urls.streamUrl)
+    setPositionUrl(urls.positionUrl)
+    setConfig(configJson)
   }
 
   if (!streamUrl)
@@ -37,7 +39,7 @@ const App = () => {
     return (
       <div className="App">
         <Header />
-        <Capture streamUrl={streamUrl} />
+        <Capture streamUrl={streamUrl} positionUrl={positionUrl}/>
 
         <ConfigList config={config} configUrl={configUrl} setConfig={setConfig}/>
       </div>

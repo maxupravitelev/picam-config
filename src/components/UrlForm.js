@@ -17,7 +17,7 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
     let urls = {
       streamUrl,
       configUrl: streamUrl + 'config',
-      moveUrl: streamUrl + 'move'
+      positionUrl: streamUrl + 'move'
     }
     // if (!url) return;
     let config = await configService.getConfig(urls.configUrl)
@@ -40,7 +40,7 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
     const dummy_values = {
       streamUrl: 'dummy_url',
       configUrl: 'dummy_config',
-      moveUrl: 'dummy_move'
+      positionUrl: 'dummy_move'
     }
 
     getStreamUrlFromForm(dummy_values, dummy_config)

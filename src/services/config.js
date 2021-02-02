@@ -20,5 +20,17 @@ const setConfig = async (configUrl, newObject) => {
   return response.data
 }
 
-let configService = { getConfig, setConfig, getStream }
+const getPosition = async (positionUrl) => {
+  const request = axios.get(positionUrl)
+  const response = await request
+  return response.data
+}
+
+const setPosition = async (positionUrl, newObject) => {
+  const request = axios.post(positionUrl, newObject)
+  const response = await request
+  return response.data
+}
+
+let configService = { getConfig, setConfig, getStream, getPosition, setPosition }
 export default configService
