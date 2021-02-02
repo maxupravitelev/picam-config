@@ -12,7 +12,7 @@ This app is a companion app for [wildlife detection](https://github.com/maxuprav
 ## Usage
 - start [adjust.py](https://github.com/maxupravitelev/wildlife_detection/blob/main/adjust.py) on your raspberry pi to run the backend script.
 - clone this repository on the machine you want to run the frontend on, `npm install` the package and `npm start` the app
-- enter the URL of your script and the corresponding config route (default: `http://0.0.0.0:8000/` and `http://0.0.0.0:8000/config`)
+- enter the URL of your video stream (if you run the frontend and backend on the same machine the default address is: `http://0.0.0.0:8000/`)
 
 
 ## App-Demo

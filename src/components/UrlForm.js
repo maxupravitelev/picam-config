@@ -6,40 +6,41 @@ import { TextField, Button } from '@material-ui/core'
 import dummy_config from '../demo_mode/config'
 
 const UrlForm = ({ getStreamUrlFromForm }) => {
-  const initValue = {
-    streamUrl: '',
-    configUrl: '',
-  }
+
 
   // const [url, setUrl] = useState("")
-  const [value, setValue] = useState(initValue)
+  const [streamUrl, setStreamUrl] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    let urls = {
+      streamUrl,
+      configUrl: streamUrl + 'config',
+      moveUrl: streamUrl + 'move'
+    }
     // if (!url) return;
-    let config = await configService.getConfig(value.configUrl)
+    let config = await configService.getConfig(urls.configUrl)
 
-    getStreamUrlFromForm(value, config)
+    getStreamUrlFromForm(urls, config)
 
     // setValue(initValue)
   }
 
+
   const handleValue = (e) => {
-    let name = e.target.name
-    // console.log(value);
 
     let newValue = e.target.value
-    setValue({
-      ...value,
-      [name]: newValue,
-    })
+    setStreamUrl(
+      newValue
+    )
   }
 
   const handleDemoMode = () => {
     const dummy_values = {
       streamUrl: 'dummy_url',
       configUrl: 'dummy_config',
+      moveUrl: 'dummy_move'
     }
 
     getStreamUrlFromForm(dummy_values, dummy_config)
@@ -51,15 +52,8 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
         <TextField
           type="text"
           className="input"
-          value={value.streamUrl}
+          value={streamUrl}
           name="streamUrl"
-          onChange={handleValue}
-        />
-        <TextField
-          type="text"
-          className="input"
-          value={value.configUrl}
-          name="configUrl"
           onChange={handleValue}
         />
         <Button 

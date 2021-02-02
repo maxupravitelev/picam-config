@@ -20,12 +20,13 @@ const App = () => {
   const [streamUrl, setStreamUrl] = useState('')
 
   const getStreamUrlFromForm = (url, configObject) => {
+    console.log(url)
     setConfigUrl(url.configUrl)
     setStreamUrl(url.streamUrl)
     setConfig(configObject)
   }
 
-  if (!configUrl)
+  if (!streamUrl)
     return (
       <div>
         <Header />
