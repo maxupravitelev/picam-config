@@ -3,25 +3,26 @@ import dummy from '../demo_mode/dummy.gif'
 
 import configService from '../services/config'
 
-import { Button } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 
 const Capture = ({ streamUrl, positionUrl }) => {
   if (streamUrl == 'dummy_url') {
     streamUrl = dummy
   }
 
-  const setCameraLeft = () => {
+  const setCameraLeft = (steps=50) => {
     let position = {
-      steps: 50,
+      steps: steps,
       direction: 'left',
     }
 
     configService.setPosition(positionUrl, position)
   }
 
-  const setCameraRight = () => {
+  const setCameraRight = (steps=50) => {
+    console.log(steps)
     let position = {
-      steps: 50,
+      steps: steps,
       direction: 'left',
     }
 
@@ -31,8 +32,11 @@ const Capture = ({ streamUrl, positionUrl }) => {
   return (
     <div className="capture">
       <img alt="stream from PiCam" src={streamUrl}></img>
-      <button onClick={setCameraLeft}>LEFT</button>
-      <button onClick={setCameraRight}>RIGHT</button>
+      <Button onClick={() => setCameraLeft(100)}>&lt;&lt;</Button>
+      <Button onClick={() => setCameraLeft()}>&lt;</Button>
+      <Button onClick={() => setCameraRight()}>&gt;</Button>
+      <Button onClick={() => setCameraRight(100)}>&gt;&gt;</Button>
+      <Typography>Click on button to adjust camera position accordingly</Typography>
     </div>
   )
 }

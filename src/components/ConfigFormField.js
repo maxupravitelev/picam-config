@@ -31,7 +31,7 @@ const ConfigFormField = ({ name, value, currentFieldValue, setConfig, currentSec
 
   }
 
-  console.log(config)
+  // console.log(config)
 
   return (
     <div className="configFormField">
