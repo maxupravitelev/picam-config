@@ -39,8 +39,9 @@ const App = () => {
     return (
       <div className="App">
         <Header />
+        <div className="App">
         <Capture streamUrl={streamUrl} positionUrl={positionUrl}/>
-
+        </div>
         <ConfigList config={config} configUrl={configUrl} setConfig={setConfig}/>
       </div>
     )

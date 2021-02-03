@@ -13,15 +13,22 @@ body {
   border: 3px solid;
 }
 
+.camPosition {
+  text-align: center;
+  display: block;
+  justify-content: space-between;
+  background-color: rgb(245, 244, 244);
+}
+
 .header {
   text-align: center;
 }
 
 img {
-  padding: 2.3em;
+  /* padding: 0.3em; */
   background-color: #fff;
-  max-width: 30em;
-  margin: auto;
+  max-width: inherit;
+  margin: inherit;
   /* border: 3px solid; */
 }
 
