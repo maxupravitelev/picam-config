@@ -16,14 +16,16 @@ This app is a companion app for [wildlife detection](https://github.com/maxuprav
 
 
 ## App-Demo
-- You can checkout a (not actually updating) demo at: LINK
+- You can checkout a (not actually updating) demo at: [picam configurator](https://musing-austin-88f127.netlify.app/)
+
 
 ## Hardware requirements:
 - A raspberry pi to run the backend [adjust.py](https://github.com/maxupravitelev/wildlife_detection/blob/main/adjust.py). Tested with a raspberry pi 4B, older models will also work (probably).
 - Optional: A GPIO connected stepper motor
 
-## current stage
+
+## Current stage
 The app is currently in prototype stage with basic functionality. Next steps are:
-- optimizing state management with Redux
 - dynamically add and remove custom input fields to Picam configuration 
 - generate raspivid cli commands based on config settings
+- Optimization (setting up state management with Redux, 

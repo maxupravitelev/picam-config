@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import configService from '../services/config'
+import configService from '../../services/config'
 
 import {
   Table,
@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import ConfigSection from '../components/ConfigSection'
+import ConfigSection from './ConfigSection'
 
 const ConfigList = ({ config, configUrl, setConfig }) => {
 

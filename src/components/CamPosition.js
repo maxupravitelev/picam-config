@@ -1,13 +1,10 @@
 import React from 'react'
-
 import configService from '../services/config'
-
 import { Button, Typography } from '@material-ui/core'
 
+// return component for repositioning camera
 const CamPosition = ({ positionUrl }) => {
-
-
-  const setCameraLeft = (steps=50) => {
+  const setCameraLeft = (steps=15) => {
     let position = {
       steps: steps,
       direction: 'left',
@@ -16,11 +13,11 @@ const CamPosition = ({ positionUrl }) => {
     configService.setPosition(positionUrl, position)
   }
 
-  const setCameraRight = (steps=50) => {
+  const setCameraRight = (steps=15) => {
     console.log(steps)
     let position = {
       steps: steps,
-      direction: 'left',
+      direction: 'right',
     }
 
     configService.setPosition(positionUrl, position)
@@ -28,10 +25,10 @@ const CamPosition = ({ positionUrl }) => {
 
   return (
     <div className="camPosition">
-      <Button variant="outlined" onClick={() => setCameraLeft(100)}>&lt;&lt;</Button>
+      <Button variant="outlined" onClick={() => setCameraLeft(30)}>&lt;&lt;</Button>
       <Button variant="outlined" onClick={() => setCameraLeft()}>&lt;</Button>
       <Button variant="outlined" onClick={() => setCameraRight()}>&gt;</Button>
-      <Button variant="outlined" onClick={() => setCameraRight(100)}>&gt;&gt;</Button>
+      <Button variant="outlined" onClick={() => setCameraRight(30)}>&gt;&gt;</Button>
       <Typography variant="body2">Click on button to adjust camera position accordingly</Typography>
     </div>
   )

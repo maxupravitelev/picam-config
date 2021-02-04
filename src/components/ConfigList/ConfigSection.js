@@ -20,7 +20,7 @@ import {
   // AccordionDetails,
 } from '@material-ui/core'
 
-import ConfigFormField from '../components/ConfigFormField'
+import ConfigFormField from './ConfigFormField'
 
 const ConfigSection = ({ config, configSection, setConfig }) => {
   let initFormFields = {
