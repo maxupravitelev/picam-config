@@ -1,34 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import configService from '../../services/config'
-
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Paper,
-  // TextField,
   Button,
-  // List,
-  // ListItem,
   Accordion,
   AccordionSummary,
   AccordionDetails,
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-
 import ConfigSection from './ConfigSection'
 
-const ConfigList = ({ config, configUrl, setConfig }) => {
 
+// return a list of input fields dynamically based on the keys of the received config.json file
+const ConfigList = ({ config, configUrl, setConfig }) => {
   const [configSections, setConfigSections] = useState(null)
 
   useEffect(() => {
     const setKeys = () => {
       let sections = Object.keys(config)
       setConfigSections(sections)
-
     }
 
     if (config) {
@@ -36,8 +25,6 @@ const ConfigList = ({ config, configUrl, setConfig }) => {
     }
   }, [config])
 
-  // console.log(configKeys);
-  //   console.log(formField);
 
   if (!configSections) return <div></div>
 
@@ -45,7 +32,6 @@ const ConfigList = ({ config, configUrl, setConfig }) => {
     e.preventDefault()
 
     configService.setConfig(configUrl, config)
-
   }
 
   return (
@@ -55,7 +41,7 @@ const ConfigList = ({ config, configUrl, setConfig }) => {
       </p>
       <form onSubmit={handleSubmit}>
         {configSections.map((sectionKey, index) => (
-          <Accordion key={sectionKey + "Accordion" + index}>
+          <Accordion key={sectionKey + 'Accordion' + index}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -63,8 +49,7 @@ const ConfigList = ({ config, configUrl, setConfig }) => {
             >
               <p>{sectionKey}</p>
             </AccordionSummary>
-            <AccordionDetails
-              >
+            <AccordionDetails>
               <ConfigSection
                 config={config}
                 configSection={sectionKey}

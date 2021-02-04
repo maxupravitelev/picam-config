@@ -1,7 +1,5 @@
-import React from "react";
-import {
-    Typography
-} from "@material-ui/core";
+import React from 'react'
+import { Typography } from '@material-ui/core'
 
 const Header = () => {
   return (
@@ -10,7 +8,7 @@ const Header = () => {
         [ PiCam Configurator ]
       </Typography>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

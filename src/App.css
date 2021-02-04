@@ -4,13 +4,19 @@ body {
 
 }
 
-.app, .header, .capture {
+.app, .header, .capture, .urlForm {
   border-radius: 15px;
   padding: 2.3em;
   background-color: #fff;
   max-width: 30em;
   margin: auto;
   border: 3px solid;
+}
+
+.urlForm {
+  text-align: center;
+  display: block;
+  justify-content: start;
 }
 
 .camPosition {

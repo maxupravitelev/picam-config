@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import configService from '../services/config'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, Typography } from '@material-ui/core'
 
 import dummy_config from '../demo_mode/config'
 
@@ -38,7 +38,8 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
   }
 
   return (
-    <div className="app">
+    <div className="urlForm">
+      <Typography variant="body2">Please enter the URL of your Picam</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
           type="text"
@@ -47,6 +48,7 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
           name="streamUrl"
           onChange={handleValue}
         />
+        <p></p>
         <Button type="submit" variant="outlined">
           Submit
         </Button>

@@ -1,30 +1,17 @@
 import React, { useState, useEffect } from 'react'
-// import {
-//     Typography
-// } from "@material-ui/core"
-
 import {
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableRow,
-  Paper,
-  // TextField,
-  // Typography,
-  // Button,
-  // List,
-  // ListItem,
-  // Accordion,
-  // AccordionSummary,
-  // AccordionDetails,
+  Paper
 } from '@material-ui/core'
-
 import ConfigFormField from './ConfigFormField'
+
 
 const ConfigSection = ({ config, configSection, setConfig }) => {
   let initFormFields = {
-    // awb_gains: '',
   }
 
   const [formFields, setFormFields] = useState(initFormFields)
@@ -50,10 +37,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
     }
   }, [config])
 
-  // console.log(config)
-  // console.log(configSection)
-  // console.log(formFields)
-  // console.log(configKeys)
 
   if (!configKeys) return <div></div>
 
@@ -63,7 +46,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
         <Table>
           <TableBody>
             {configKeys.map((key, index) => {
-              // console.log(config[configSection][key])
               return (
                 <TableRow key={key + "TableRow" + index}>
                   <TableCell
@@ -75,7 +57,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
                       currentSection={configSection}
                       value={formFields[key]}
                       name={key}
-                      // onChange={handleFormField}
                       setConfig={setConfig}
                     />
                   </TableCell>
