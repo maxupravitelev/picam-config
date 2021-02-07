@@ -5,14 +5,13 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-  Paper
+  Paper,
 } from '@material-ui/core'
 import ConfigFormField from './ConfigFormField'
-
+import ConfigFormFieldSelect from './ConfigFormFieldSelect'
 
 const ConfigSection = ({ config, configSection, setConfig }) => {
-  let initFormFields = {
-  }
+  let initFormFields = {}
 
   const [formFields, setFormFields] = useState(initFormFields)
   const [configKeys, setConfigKeys] = useState(null)
@@ -37,7 +36,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
     }
   }, [config])
 
-
   if (!configKeys) return <div></div>
 
   return (
@@ -46,22 +44,40 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
         <Table>
           <TableBody>
             {configKeys.map((key, index) => {
-              return (
-                <TableRow key={key + "TableRow" + index}>
-                  <TableCell
-                  >{key}</TableCell>
-                  <TableCell>
-                    <ConfigFormField
-                      config={config}
-                      currentFieldValue={config[configSection][key]}
-                      currentSection={configSection}
-                      value={formFields[key]}
-                      name={key}
-                      setConfig={setConfig}
-                    />
-                  </TableCell>
-                </TableRow>
-              )
+              if (typeof config[configSection][key] == 'object') {
+                console.log(key)
+                return (
+                  <TableRow key={key + 'TableRow' + index}>
+                    <TableCell>{key}</TableCell>
+                    <TableCell>
+                      <ConfigFormFieldSelect
+                        config={config}
+                        currentFieldValue={config[configSection][key]}
+                        currentSection={configSection}
+                        value={formFields[key]}
+                        name={key}
+                        setConfig={setConfig}
+                      />
+                    </TableCell>
+                  </TableRow>
+                )
+              } else {
+                return (
+                  <TableRow key={key + 'TableRow' + index}>
+                    <TableCell>{key}</TableCell>
+                    <TableCell>
+                      <ConfigFormField
+                        config={config}
+                        currentFieldValue={config[configSection][key]}
+                        currentSection={configSection}
+                        value={formFields[key]}
+                        name={key}
+                        setConfig={setConfig}
+                      />
+                    </TableCell>
+                  </TableRow>
+                )
+              }
             })}
           </TableBody>
         </Table>

@@ -2,29 +2,13 @@ import { config } from 'process'
 import React, { useState } from 'react'
 // import { Typography } from "@material-ui/core";
 
-const ConfigFormField = ({ name, value, currentFieldValue, setConfig, currentSection, config }) => {
+const ConfigFormFieldSelect = ({ name, value, currentFieldValue, setConfig, currentSection, config }) => {
  
   const [formField, setFormField] = useState(currentFieldValue)
 
 
-  let formFieldType = 'text'
-
-  if (typeof currentFieldValue == 'number') {
-    // console.log(currentFieldValue)
-    formFieldType = 'number'
-  }
-
-  // if (typeof currentFieldValue == 'object') {
-  //   // console.log(currentFieldValue)
-  //   formFieldType = 'text'
-
-  //   currentFieldValue = currentFieldValue.set
-
-  // }
-
   const handleFormField = (e) => {
     let name = e.target.name
-    console.log(formField);
 
     let newFormField = e.target.value
     setFormField({
@@ -32,20 +16,18 @@ const ConfigFormField = ({ name, value, currentFieldValue, setConfig, currentSec
       [name]: newFormField,
     })
     // console.log(config[currentSection][name])
-    config[currentSection][name] = newFormField
+    config[currentSection][name]["set"] = newFormField
 
     setConfig(config)
 
   }
 
-  console.log(currentFieldValue)
-
   return (
     <div className="configFormField">
       <input
-        type={formFieldType}
+        type="text"
         // default={currentFieldValue}
-        placeholder={currentFieldValue}
+        placeholder={currentFieldValue.set}
         className="input"
         value={value[value]}
         name={name}
@@ -55,4 +37,4 @@ const ConfigFormField = ({ name, value, currentFieldValue, setConfig, currentSec
   )
 }
 
-export default ConfigFormField
+export default ConfigFormFieldSelect
