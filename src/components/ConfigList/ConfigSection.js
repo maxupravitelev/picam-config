@@ -11,24 +11,13 @@ import ConfigFormField from './ConfigFormField'
 import ConfigFormFieldSelect from './ConfigFormFieldSelect'
 
 const ConfigSection = ({ config, configSection, setConfig }) => {
-  let initFormFields = {}
 
-  const [formFields, setFormFields] = useState(initFormFields)
   const [configKeys, setConfigKeys] = useState(null)
 
   useEffect(() => {
     const setKeys = () => {
       let configKeys = Object.keys(config[configSection])
       setConfigKeys(configKeys)
-
-      for (let i = 0; i < configKeys.length; i++) {
-        let newKey = configKeys[i]
-        initFormFields = {
-          ...initFormFields,
-          [newKey]: '',
-        }
-      }
-      setFormFields(initFormFields)
     }
 
     if (config) {
@@ -53,7 +42,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
                         config={config}
                         currentFieldObject={config[configSection][key]}
                         currentSection={configSection}
-                        value={formFields[key]}
                         name={key}
                         setConfig={setConfig}
                       />
@@ -69,7 +57,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
                         config={config}
                         currentFieldValue={config[configSection][key]}
                         currentSection={configSection}
-                        value={formFields[key]}
                         name={key}
                         setConfig={setConfig}
                       />

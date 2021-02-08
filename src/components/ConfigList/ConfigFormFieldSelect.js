@@ -41,7 +41,8 @@ const ConfigFormFieldSelect = ({
     <div className="configFormField">
       <input
         type="text"
-        placeholder={formField[name]}
+        // default={currentFieldObject}
+        placeholder={formField['set']}
         className="input"
         value={value.text}
         name={name}
