@@ -10,7 +10,7 @@ const dummy_config = {
 
   "adjust_config": {
     "bbox_mode": "false",
-    "gpio_motor": "true"
+    "gpio_motor": "false"
   },
   "file_writer_config": {
     "mode": "gif",
@@ -39,16 +39,17 @@ const dummy_config = {
     "awb_mode": "off",
     "exposure_mode": "auto",
     "framerate": 30,
-    "resolution_16:9": [
+    "resolution": { 
+      "set": [640, 480],
+      "options": [
+      [640, 480],
+      [1024, 768],
+      [1640, 1232],
       [1280, 730],
       [1640, 922],
       [1920, 1080]
-    ],
-    "resolution_4:3": [
-      [640, 480],
-      [1024, 768],
-      [1640, 1232]
-    ],
+    ]
+  },
     "image_effect": {
       "set": "none",
       "options": ["none", "negative", "solarize", "sketch",  "denoise", "emboss", "oilpaint", "hatch", "gpen", "pastel", "watercolor", "film", "blur", "saturation", "colorswap", "washedout", "posterise", "colorpoint", "colorbalance", "cartoon", "deinterlace1","deinterlace2"]

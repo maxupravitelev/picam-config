@@ -38,8 +38,6 @@ const ConfigFormField = ({ name, value, currentFieldValue, setConfig, currentSec
 
   }
 
-  console.log(currentFieldValue)
-
   return (
     <div className="configFormField">
       <input

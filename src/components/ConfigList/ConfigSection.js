@@ -45,14 +45,13 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
           <TableBody>
             {configKeys.map((key, index) => {
               if (typeof config[configSection][key] == 'object') {
-                console.log(key)
                 return (
                   <TableRow key={key + 'TableRow' + index}>
                     <TableCell>{key}</TableCell>
                     <TableCell>
                       <ConfigFormFieldSelect
                         config={config}
-                        currentFieldValue={config[configSection][key]}
+                        currentFieldObject={config[configSection][key]}
                         currentSection={configSection}
                         value={formFields[key]}
                         name={key}
