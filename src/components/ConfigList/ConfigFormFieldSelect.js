@@ -35,7 +35,27 @@ const ConfigFormFieldSelect = ({
   }
 
 
+  const handleCommaInArray = (option) => {
+
+    let commaSeparatedValue = ''
+
+    if ((option.length) && (typeof option[0] == 'number')) {
+      for (let i = 0; i < option.length; i++) {
+        if (commaSeparatedValue.length < 1) {
+          commaSeparatedValue += option[0]
+        } else {
+          commaSeparatedValue += ',' + option[i]
+
+        }
+      }
+      return commaSeparatedValue
+    }
+    return option
+  }
+
   if (!currentFieldObject.set) return <div></div>
+
+  console.log(formField)
 
   return (
     <div className="configFormField">
@@ -58,7 +78,7 @@ const ConfigFormFieldSelect = ({
       >
         {currentFieldObject.options.map((option, index) => (
           <MenuItem key={'select' + option + index} value={option}>
-            {option}
+            {handleCommaInArray(option)}
           </MenuItem>
         ))}
       </Select>
