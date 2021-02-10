@@ -30,7 +30,7 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
   return (
     <div className="configSection">
       <TableContainer component={Paper}>
-        <Table>
+        <Table size="small">
           <TableBody>
             {configKeys.map((key, index) => {
               if (typeof config[configSection][key] == 'object') {

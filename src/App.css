@@ -47,13 +47,14 @@ img {
 }
 
 .configSection {
-  margin: auto
+  margin: auto;
+  padding: 0;
 }
 
 .configFormField {
   border-radius: 15px;
   padding: 0.3em;
-  margin: auto
+  margin: auto;
 }
 
 /* .capture {
@@ -62,7 +63,9 @@ img {
   align-items: center;
 } */
 
-
+input {
+  width: 5em
+}
 
 /* form {
   display: block;
