@@ -14,7 +14,6 @@ const ConfigFormField = ({ name, currentFieldValue, setConfig, currentSection, c
 
   }
   const handleFormField = (e) => {
-    // let name = e.target.name
     console.log(formField);
 
     let newFormField = e.target.value
@@ -32,7 +31,6 @@ const ConfigFormField = ({ name, currentFieldValue, setConfig, currentSection, c
     setConfig(config)
 
   }
-  console.log(config)
   return (
     <div className="configFormField">
       <input

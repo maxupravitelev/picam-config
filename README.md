@@ -9,7 +9,7 @@ This app is a companion app for [wildlife detection](https://github.com/maxuprav
 
 ## Features
 - adjust your PiCam remotely, e.g. within a local network
-- try out different PiCam settings in realtime (e.g. setting different white balance values)
+- try out different PiCam settings in realtime (e.g. setting white balance values or trying out different image effects)
 - adjust the position of the camera by utilizing a GPIO connected stepper motor
 
 

@@ -6,7 +6,9 @@ import Container from '@material-ui/core/Container'
 
 ReactDOM.render(
   // <React.StrictMode>
-  <Container maxWidth="sm">
+  <Container 
+  // maxWidth="false"
+  >
     <App />
   </Container>,
   // </React.StrictMode>,

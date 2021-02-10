@@ -4,7 +4,6 @@ import { Typography, MenuItem, Select, InputLabel } from '@material-ui/core'
 
 const ConfigFormFieldSelect = ({
   name,
-  // value,
   currentFieldObject,
   setConfig,
   currentSection,
@@ -18,7 +17,6 @@ const ConfigFormFieldSelect = ({
 
   });
 
-  console.log(formField)
 
   const handleChange = (e) => {
     let name = e.target.name
@@ -55,13 +53,12 @@ const ConfigFormFieldSelect = ({
 
   if (!currentFieldObject.set) return <div></div>
 
-  console.log(formField)
+  // console.log(formField)
 
   return (
     <div className="configFormField">
       <input
         type="text"
-        // default={currentFieldObject}
         placeholder={formField['set']}
         className="input"
         value={value.text}
