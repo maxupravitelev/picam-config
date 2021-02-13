@@ -1,20 +1,22 @@
 body {
   /* background-color: rgb(57, 91, 184); */
-  background-color: rgb(25, 27, 105);
+  /* background-color: rgb(25, 27, 105); */
+  background-color: rgba(18, 8, 105, 0.76);
 
 }
 
 .app, .header, .capture, .urlForm {
-  border-radius: 15px;
-  padding: 1.5em;
+  /* border-radius: 5px; */
+  padding: 1em;
   background-color: #fff;
   /* max-width: 50em; */
   /* margin: auto; */
-  border: 3px solid;
+  /* border: 3px solid; */
   text-align: center;
 }
 
 .urlForm {
+  margin-top: 1em;
   text-align: center;
   display: block;
   justify-content: start;
@@ -27,10 +29,11 @@ body {
   background-color: rgb(245, 244, 244);
 }
 
-/* .header {
+.header {
+  margin-top: 1em;
   text-align: center;
-  max-width: 40;
-} */
+  /* max-width: 40; */
+}
 
 /* .capture {
   max-width: inherit;

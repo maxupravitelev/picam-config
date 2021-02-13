@@ -54,10 +54,10 @@ const App = () => {
 
   else {
     return (
-      <Grid container className={classes.root} spacing={3} justify="center" alignItems="center">
-        <Grid item xs={12} sm={9} zeroMinWidth>
+      <Grid container className={classes.root} spacing={2} justify="center" alignItems="center">
+        {/* <Grid item xs={12} sm={9} zeroMinWidth>
           <Header />
-        </Grid>
+        </Grid> */}
         <Grid item xs={6} sm={6} zeroMinWidth>
             <Capture streamUrl={streamUrl} positionUrl={positionUrl} />
         </Grid>
