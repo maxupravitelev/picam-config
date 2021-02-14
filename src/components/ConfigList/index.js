@@ -35,7 +35,7 @@ const ConfigList = ({ config, configUrl, setConfig }) => {
   }
 
   return (
-    <div className="app">
+    <div className="configList">
       <p>
         <a href={configUrl}>View config file on server</a>
       </p>
