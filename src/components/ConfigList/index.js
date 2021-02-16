@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import configService from '../../services/config'
-import {
-  Button,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from '@material-ui/core'
+import { Button, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ConfigSection from './ConfigSection'
 
 import { useSelector } from 'react-redux'
 
 
-
 // return a list of input fields dynamically based on the keys of the received config.json file
-const ConfigList = ({ configUrl, setConfig }) => {
+const ConfigList = ({ setConfig }) => {
   const [configSections, setConfigSections] = useState(null)
 
   let config = useSelector((state) => state.config)
-  console.log(config)
-
+  let configUrl = useSelector((state) => state.urls.configUrl)
 
   useEffect(() => {
     const setKeys = () => {

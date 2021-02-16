@@ -1,11 +1,15 @@
-import { config } from 'process'
 import React, { useState } from 'react'
 // import { Typography } from "@material-ui/core";
+import { useDispatch, useSelector } from 'react-redux'
+import { updateConfig } from '../../reducers/configReducer'
 
-const ConfigFormField = ({ name, currentFieldValue, setConfig, currentSection, config }) => {
+
+const ConfigFormField = ({ name, currentFieldValue, currentSection }) => {
 
   const [formField, setFormField] = useState(currentFieldValue)
 
+  const dispatch = useDispatch()
+  let config = useSelector((state) => state.config)
 
   let formFieldType = 'text'
 
@@ -14,8 +18,6 @@ const ConfigFormField = ({ name, currentFieldValue, setConfig, currentSection, c
 
   }
   const handleFormField = (e) => {
-    console.log(formField);
-
     let newFormField = e.target.value
 
     if (typeof currentFieldValue == 'number') {
@@ -28,7 +30,7 @@ const ConfigFormField = ({ name, currentFieldValue, setConfig, currentSection, c
     })
     config[currentSection][name] = newFormField
 
-    setConfig(config)
+    dispatch(updateConfig(config))
 
   }
   return (

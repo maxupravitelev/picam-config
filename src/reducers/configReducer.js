@@ -1,11 +1,7 @@
 import configService from '../services/config'
 import dummy_config from '../demo_mode/config'
 
-let initState = [
-  {config: null},
-  {urls: null}
 
-]
 
 const configReducer = (state = [], action) => {
   console.log('state now: ', state)
@@ -15,7 +11,7 @@ const configReducer = (state = [], action) => {
     case 'SET_CONFIG':
       return action.data
     case 'UPDATE_CONFIG':
-      return state.filter(config => config.id !== action.data.id)
+      return action.data
     default:
       return state
   }
@@ -39,11 +35,11 @@ export const initializeConfig = (configUrl) => {
   }
 }
 
-export const initializePosition = (positionUrl) => {
+export const updateConfig = (config) => {
   return async dispatch => {
     dispatch({
-      type: 'SET_POSITION_URL',
-      data: { positionUrl }
+      type: 'UPDATE_CONFIG',
+      data: config
     })
   }
 }
