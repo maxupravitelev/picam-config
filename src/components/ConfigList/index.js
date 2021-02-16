@@ -9,10 +9,17 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ConfigSection from './ConfigSection'
 
+import { useSelector } from 'react-redux'
+
+
 
 // return a list of input fields dynamically based on the keys of the received config.json file
-const ConfigList = ({ config, configUrl, setConfig }) => {
+const ConfigList = ({ configUrl, setConfig }) => {
   const [configSections, setConfigSections] = useState(null)
+
+  let config = useSelector((state) => state.config)
+  console.log(config)
+
 
   useEffect(() => {
     const setKeys = () => {

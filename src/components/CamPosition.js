@@ -2,8 +2,16 @@ import React from 'react'
 import configService from '../services/config'
 import { Button, Typography } from '@material-ui/core'
 
+import { useSelector } from 'react-redux'
+
+
 // return component for repositioning camera
 const CamPosition = ({ positionUrl }) => {
+
+  let positionUrl2 = useSelector((state) => state.position)
+  console.log(positionUrl2)
+
+
   const setCameraLeft = (steps=15) => {
     let position = {
       steps: steps,

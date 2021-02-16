@@ -35,23 +35,19 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const [config, setConfig] = useState(null)
   const [configUrl, setConfigUrl] = useState('')
-  const [streamUrl, setStreamUrl] = useState('')
+  // const [streamUrl, setStreamUrl] = useState('')
   const [positionUrl, setPositionUrl] = useState('')
 
   const classes = useStyles();
 
-  const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //  dispatch(initializeConfig())
-  // }, [dispatch])
+  let streamUrl = useSelector((state) => state.urls.streamUrl)
+  console.log(streamUrl)
 
   const getStreamUrlFromForm = (urls, configJson) => {
     setConfigUrl(urls.configUrl)
     setStreamUrl(urls.streamUrl)
     setPositionUrl(urls.positionUrl)
     setConfig(configJson)
-    // dispatch(initializeConfig())
 
   }
 
@@ -59,10 +55,10 @@ const App = () => {
   if (!streamUrl)
     return (
       <Grid container direction="column" alignItems="center" className={classes.root} spacing={1} justify="center" >
-        <Grid  zeroMinWidth>
+        <Grid >
           <Header />
         </Grid>
-        <Grid  zeroMinWidth> 
+        <Grid > 
           <UrlForm getStreamUrlFromForm={getStreamUrlFromForm} />
         </Grid>
       </Grid >
