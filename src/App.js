@@ -35,21 +35,11 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const [config, setConfig] = useState(null)
   const [configUrl, setConfigUrl] = useState('')
-  // const [streamUrl, setStreamUrl] = useState('')
-  const [positionUrl, setPositionUrl] = useState('')
 
   const classes = useStyles();
 
   let streamUrl = useSelector((state) => state.urls.streamUrl)
-  console.log(streamUrl)
 
-  const getStreamUrlFromForm = (urls, configJson) => {
-    setConfigUrl(urls.configUrl)
-    setStreamUrl(urls.streamUrl)
-    setPositionUrl(urls.positionUrl)
-    setConfig(configJson)
-
-  }
 
   // return url form if stream is not set yet
   if (!streamUrl)
@@ -59,7 +49,7 @@ const App = () => {
           <Header />
         </Grid>
         <Grid > 
-          <UrlForm getStreamUrlFromForm={getStreamUrlFromForm} />
+          <UrlForm />
         </Grid>
       </Grid >
     )
@@ -71,7 +61,7 @@ const App = () => {
           <Header />
         </Grid> */}
         <Grid item xs={6} sm={6} zeroMinWidth>
-            <Capture streamUrl={streamUrl} positionUrl={positionUrl} />
+            <Capture streamUrl={streamUrl} />
         </Grid>
 
         <Grid item xs={6} sm={6} zeroMinWidth>

@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux'
 
 
 // return component for repositioning camera
-const CamPosition = ({ positionUrl }) => {
+const CamPosition = ({  }) => {
 
-  let positionUrl2 = useSelector((state) => state.position)
-  console.log(positionUrl2)
+  let positionUrl = useSelector((state) => state.urls.positionUrl)
+  console.log(positionUrl)
 
 
   const setCameraLeft = (steps=15) => {

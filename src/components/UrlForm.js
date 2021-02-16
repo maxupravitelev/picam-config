@@ -7,10 +7,11 @@ import dummy_config from '../demo_mode/config'
 
 // init redux and import reducers
 import { useDispatch, useSelector } from 'react-redux'
-import { initializeConfig, initializePosition, setUrls } from '../reducers/configReducer'
+import { initializeConfig, initializePosition } from '../reducers/configReducer'
+import {  setUrls } from '../reducers/urlReducer'
 
 
-const UrlForm = ({ getStreamUrlFromForm }) => {
+const UrlForm = ({  }) => {
   const [streamUrl, setStreamUrl] = useState('')
 
   const dispatch = useDispatch()
@@ -24,10 +25,8 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
       configUrl: streamUrl + 'config',
       positionUrl: streamUrl + 'move',
     }
-    let config = await configService.getConfig(urls.configUrl)
-    dispatch(initializeConfig(urls))
-
-    getStreamUrlFromForm(urls, config)
+    dispatch(initializeConfig(urls.configUrl))
+    dispatch(setUrls(urls))
   }
 
   const handleValue = (e) => {
@@ -43,10 +42,8 @@ const UrlForm = ({ getStreamUrlFromForm }) => {
       positionUrl: 'dummy_move',
     }
 
-    // getStreamUrlFromForm(dummy_values, dummy_config)
     dispatch(initializeConfig(dummy_values.configUrl))
     dispatch(setUrls(dummy_values))
-    // dispatch(initializePosition(dummy_values.positionUrl))
 
   }
 

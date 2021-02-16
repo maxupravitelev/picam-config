@@ -13,13 +13,7 @@ const configReducer = (state = [], action) => {
 
   switch (action.type) {
     case 'SET_CONFIG':
-      return [...state, action.data]
-    case 'SET_URLS':
-      return [...state, action.data]
-    case 'SET_STREAM_URL':
       return action.data
-    case 'SET_POSITION_URL':
-      return [...state, action.data]
     case 'UPDATE_CONFIG':
       return state.filter(config => config.id !== action.data.id)
     default:
@@ -27,14 +21,6 @@ const configReducer = (state = [], action) => {
   }
 }
 
-export const setUrls = (urls) => {
-  return async dispatch => {
-    dispatch({
-      type: 'SET_URLS',
-      data: urls
-    })
-  }
-}
 
 export const initializeConfig = (configUrl) => {
   return async dispatch => {
