@@ -4,19 +4,28 @@ import { TextField, Button, Typography } from '@material-ui/core'
 
 import dummy_config from '../demo_mode/config'
 
+
+// init redux and import reducers
+import { useDispatch, useSelector } from 'react-redux'
+import { initializeConfig } from '../reducers/configReducer'
+
+
 const UrlForm = ({ getStreamUrlFromForm }) => {
   const [streamUrl, setStreamUrl] = useState('')
+
+  const dispatch = useDispatch()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // add corresponding string to bast streamUrl
+    // add corresponding string to base streamUrl
     let urls = {
       streamUrl,
       configUrl: streamUrl + 'config',
       positionUrl: streamUrl + 'move',
     }
     let config = await configService.getConfig(urls.configUrl)
+    dispatch(initializeConfig(urls.configUrl))
 
     getStreamUrlFromForm(urls, config)
   }
