@@ -1,4 +1,4 @@
-const dummy_config = {
+{
   "analyzer_config": {
     "bbox_mode": "false",
     "detection_area_factor": 0.002,
@@ -56,6 +56,3 @@ const dummy_config = {
     }
   }
 }
-
-
-export default dummy_config

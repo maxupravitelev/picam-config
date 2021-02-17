@@ -17,10 +17,12 @@ import { restoreConfig } from '../reducers/configReducer'
 
 const NavBar = ({ }) => {
 
+  let urls = useSelector(state => state.urls)
+
   let counter = useSelector((state) => state.config.length)
   let config = useSelector((state) => state.config[counter - 1])
   const firstConfig = useSelector((state) => state.config[0])
-
+  // console.log(firstConfig)
   let configUrl = useSelector((state) => state.urls.configUrl)
 
   const dispatch = useDispatch()
@@ -29,12 +31,19 @@ const NavBar = ({ }) => {
   const handleSend = (e) => {
     e.preventDefault()
 
-    configService.setConfig(configUrl, config)
+    if (urls.configUrl != 'dummy_config') {
+      configService.setConfig(configUrl, config)
+
+    }
   }
 
   const handleBackup = (e) => {
     e.preventDefault()
 
+    // Source for clearing input fields: https://www.freecodecamp.org/news/how-to-clear-input-values-of-dynamic-form-in-react/
+    Array.from(document.querySelectorAll('input')).forEach(
+      input => (input.value = "")
+    );
     dispatch(restoreConfig(firstConfig))
 
   }
@@ -46,10 +55,10 @@ const NavBar = ({ }) => {
       </Button>
       <Typography variant='caption'>view file</Typography>
 
-      <Button onClick={handleBackup}type="submit" variant="outlined">
+      {/* <Button onClick={handleBackup}type="submit" variant="outlined">
         <RestoreIcon />
-      </Button>
-      <Typography variant='caption'>restore</Typography>
+      </Button> */}
+      {/* <Typography variant='caption'>restore</Typography> */}
       <Button onClick={handleSend} type="submit" variant="outlined">
         <SendIcon />
       </Button>

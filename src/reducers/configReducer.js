@@ -4,8 +4,8 @@ import dummy_config from '../demo_mode/config'
 
 
 const configReducer = (state = [], action) => {
-  console.log('state now: ', state)
-  console.log('action', action)
+  // console.log('state now: ', state)
+  // console.log('action', action)
 
   switch (action.type) {
     case 'SET_CONFIG':
@@ -20,25 +20,8 @@ const configReducer = (state = [], action) => {
 }
 
 
-// export const initializeConfig = (configUrl) => {
-//   return async dispatch => {
-//     if (configUrl == 'dummy_config') {
-//       dispatch({
-//         type: 'SET_CONFIG',
-//         data: dummy_config
-//       })
-//     } else {
-//       const config = await configService.getConfig(configUrl)
-//       dispatch({
-//         type: 'SET_CONFIG',
-//         data: config
-//       })
-//     }
-//   }
-// }
 
 export const initializeConfig = (configUrl) => {
-  console.log("call")
   return async dispatch => {
     if (configUrl == 'dummy_config') {
 
@@ -68,11 +51,8 @@ export const initializeConfig = (configUrl) => {
   }
 }
 
-export const updateConfig = (updatedConfig, counter) => {
-  const config = {
-    ...updatedConfig,
-    counter: counter + 1
-  }
+export const updateConfig = (config) => {
+  console.log(config)
   return async dispatch => {
     dispatch({
       type: 'UPDATE_CONFIG',
