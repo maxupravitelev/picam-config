@@ -1,15 +1,29 @@
+// import react & redux
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { Button, Typography } from '@material-ui/core'
 
 import RestoreIcon from '@material-ui/icons/Restore';
 import SendIcon from '@material-ui/icons/Send';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
-import { useSelector } from 'react-redux'
+
+
+// import backend service
+import configService from '../services/config'
+
+
 
 const NavBar = ({ }) => {
-  
+
+  let config = useSelector((state) => state.config)
   let configUrl = useSelector((state) => state.urls.configUrl)
+
+  const handleSend = (e) => {
+    e.preventDefault()
+
+    configService.setConfig(configUrl, config)
+  }
 
   return (
     <div className="navbar">
@@ -22,7 +36,7 @@ const NavBar = ({ }) => {
         <RestoreIcon />
       </Button>
       <Typography variant='caption'>restore</Typography>
-      <Button type="submit" variant="outlined">
+      <Button onClick={handleSend} type="submit" variant="outlined">
         <SendIcon />
       </Button>
       <Typography variant='caption'>send</Typography>

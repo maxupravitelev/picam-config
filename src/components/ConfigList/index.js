@@ -57,9 +57,9 @@ const ConfigList = ({ setConfig }) => {
           </Accordion>
         ))}
 
-        <Button type="submit" variant="outlined">
+        {/* <Button type="submit" variant="outlined">
           SET
-        </Button>
+        </Button> */}
       </form>
     </div>
   )
