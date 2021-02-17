@@ -24,12 +24,12 @@ body {
 
 .navbar {
   padding: 1.5em;
+  text-align: center;
   background-color: #fff;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  height: 100px;
   max-width: 17%;
 }
 

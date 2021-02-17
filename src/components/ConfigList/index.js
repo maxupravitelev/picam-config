@@ -36,9 +36,7 @@ const ConfigList = ({ setConfig }) => {
 
   return (
     <div className="configList">
-      <p>
-        <a href={configUrl}>View config file on server</a>
-      </p>
+
       <form onSubmit={handleSubmit}>
         {configSections.map((sectionKey, index) => (
           <Accordion key={sectionKey + 'Accordion' + index}>
