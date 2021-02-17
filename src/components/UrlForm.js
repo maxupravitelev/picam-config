@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import configService from '../services/config'
-import { TextField, Button, Typography } from '@material-ui/core'
 
-import dummy_config from '../demo_mode/config'
+// import material ui
+import { TextField, Button, Typography } from '@material-ui/core'
 
 
 // init redux and import reducers
-import { useDispatch, useSelector } from 'react-redux'
-import { initializeConfig, initializePosition } from '../reducers/configReducer'
+import { useDispatch } from 'react-redux'
+import { initializeConfig } from '../reducers/configReducer'
 import {  setUrls } from '../reducers/urlReducer'
 
 

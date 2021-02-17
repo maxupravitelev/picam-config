@@ -12,6 +12,8 @@ const configReducer = (state = [], action) => {
       return action.data
     case 'UPDATE_CONFIG':
       return action.data
+    case 'GET_CONFIG_KEYS':
+      return action.data
     default:
       return state
   }
@@ -34,6 +36,34 @@ export const initializeConfig = (configUrl) => {
     }
   }
 }
+
+// export const initializeConfig = (configUrl) => {
+//   return async dispatch => {
+//     if (configUrl == 'dummy_config') {
+
+//       const config = {
+//         content: dummy_config,
+//         couter: 0
+//       }
+
+//       dispatch({
+//         type: 'SET_CONFIG',
+//         data: config
+//       })
+//     } else {
+//       const config_json = await configService.getConfig(configUrl)
+
+//       const config = {
+//         content: config_json,
+//         couter: 0
+//       }
+
+//       dispatch({
+//         type: 'SET_CONFIG',
+//         data: config
+//       })
+//     }
+
 
 export const updateConfig = (config) => {
   return async dispatch => {

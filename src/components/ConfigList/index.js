@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import configService from '../../services/config'
-import { Button, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core'
+import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ConfigSection from './ConfigSection'
 
@@ -9,24 +9,15 @@ import { useSelector } from 'react-redux'
 
 // return a list of input fields dynamically based on the keys of the received config.json file
 const ConfigList = ({ setConfig }) => {
-  const [configSections, setConfigSections] = useState(null)
 
   let config = useSelector((state) => state.config)
   let configUrl = useSelector((state) => state.urls.configUrl)
 
-  useEffect(() => {
-    const setKeys = () => {
-      let sections = Object.keys(config)
-      setConfigSections(sections)
-    }
-
-    if (config) {
-      setKeys()
-    }
-  }, [config])
+  // get section keys for rendering sections
+  let configSections = Object.keys(config)
 
 
-  if (!configSections) return <div></div>
+  // if (!configSections) return <div></div>
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -34,6 +25,7 @@ const ConfigList = ({ setConfig }) => {
     configService.setConfig(configUrl, config)
   }
 
+  
   return (
     <div className="configList">
 
@@ -51,7 +43,6 @@ const ConfigList = ({ setConfig }) => {
               <ConfigSection
                 config={config}
                 configSection={sectionKey}
-                setConfig={setConfig}
               />
             </AccordionDetails>
           </Accordion>

@@ -1,29 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Paper,
-} from '@material-ui/core'
+import { Table, TableBody, TableCell, TableContainer, TableRow, Paper, } from '@material-ui/core'
 import ConfigFormField from './ConfigFormField'
 import ConfigFormFieldSelect from './ConfigFormFieldSelect'
 
-const ConfigSection = ({ config, configSection, setConfig }) => {
+import { useSelector } from 'react-redux'
 
-  const [configKeys, setConfigKeys] = useState(null)
 
-  useEffect(() => {
-    const setKeys = () => {
-      let configKeys = Object.keys(config[configSection])
-      setConfigKeys(configKeys)
-    }
+const ConfigSection = ({ configSection }) => {
 
-    if (config) {
-      setKeys()
-    }
-  }, [config])
+  
+  const config = useSelector((state) => state.config)
+
+  const configKeys = Object.keys(config[configSection])
+
 
   if (!configKeys) return <div></div>
 
@@ -43,7 +32,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
                         currentFieldObject={config[configSection][key]}
                         currentSection={configSection}
                         name={key}
-                        setConfig={setConfig}
                       />
                     </TableCell>
                   </TableRow>
@@ -58,7 +46,6 @@ const ConfigSection = ({ config, configSection, setConfig }) => {
                         currentFieldValue={config[configSection][key]}
                         currentSection={configSection}
                         name={key}
-                        setConfig={setConfig}
                       />
                     </TableCell>
                   </TableRow>
