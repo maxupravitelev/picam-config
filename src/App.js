@@ -1,10 +1,8 @@
 // import react modules
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 // init redux and import reducers
-import { useDispatch, useSelector } from 'react-redux'
-import { initializeConfig } from './reducers/configReducer'
-
+import { useSelector } from 'react-redux'
 
 // import components
 import UrlForm from './components/UrlForm'
@@ -17,30 +15,11 @@ import NavBar from './components/NavBar'
 import './App.css'
 
 import Grid from '@material-ui/core/Grid';
-// import { makeStyles } from '@material-ui/core/styles';
 
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   // paper: {
-//   //   height: 140,
-//   //   width: 100,
-//   // },
-//   // control: {
-//   //   padding: theme.spacing(2),
-//   // },
-// }));
 
 const App = () => {
-  const [config, setConfig] = useState(null)
-  const [configUrl, setConfigUrl] = useState('')
-
-  // const classes = useStyles();
 
   let streamUrl = useSelector((state) => state.urls.streamUrl)
-
 
   // return url form if stream is not set yet
   if (!streamUrl)
@@ -57,7 +36,7 @@ const App = () => {
 
   else {
     return (
-      <Grid container  spacing={2} justify="center" alignItems="center">
+      <Grid container spacing={2} justify="center" alignItems="center">
         {/* <Grid item xs={12} sm={9} zeroMinWidth>
           <Header />
         </Grid> */}

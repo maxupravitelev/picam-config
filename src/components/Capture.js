@@ -2,8 +2,15 @@ import React from 'react'
 import dummy from '../demo_mode/dummy.gif'
 import CamPosition from '../components/CamPosition'
 
+import { useSelector } from 'react-redux'
+
+
 // return live stream component
-const Capture = ({ streamUrl, positionUrl }) => {
+const Capture = ({  }) => {
+
+  let streamUrl = useSelector((state) => state.urls.streamUrl)
+  let positionUrl = useSelector((state) => state.urls.streamUrl)
+
   if (streamUrl == 'dummy_url') {
     streamUrl = dummy
   }

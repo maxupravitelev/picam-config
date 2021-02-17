@@ -14,7 +14,7 @@ const ConfigList = ({ }) => {
   let config = useSelector((state) => state.config[counter - 1])
   let configUrl = useSelector((state) => state.urls.configUrl)
 
-
+  if (!config) return <div></div>
   // get section keys for rendering sections
   let configSections = Object.keys(config)
 

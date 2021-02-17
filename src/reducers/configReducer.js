@@ -9,7 +9,7 @@ const configReducer = (state = [], action) => {
 
   switch (action.type) {
     case 'SET_CONFIG':
-      return [...state, action.data]
+      return [...state, action.data, action.data]
     case 'UPDATE_CONFIG':
       return [...state, action.data]
     case 'RESTORE_CONFIG':
@@ -20,6 +20,22 @@ const configReducer = (state = [], action) => {
 }
 
 
+// export const initializeConfig = (configUrl) => {
+//   return async dispatch => {
+//     if (configUrl == 'dummy_config') {
+//       dispatch({
+//         type: 'SET_CONFIG',
+//         data: dummy_config
+//       })
+//     } else {
+//       const config = await configService.getConfig(configUrl)
+//       dispatch({
+//         type: 'SET_CONFIG',
+//         data: config
+//       })
+//     }
+//   }
+// }
 
 export const initializeConfig = (configUrl) => {
   return async dispatch => {
@@ -36,16 +52,15 @@ export const initializeConfig = (configUrl) => {
       })
     } else {
       const config_json = await configService.getConfig(configUrl)
-
-      const config = {
-        content: config_json,
-        backup: config_json,
-        counter: 0
-      }
+      // const config = {
+      //   content: config_json,
+      //   backup: config_json,
+      //   counter: 0
+      // }
 
       dispatch({
         type: 'SET_CONFIG',
-        data: config
+        data: config_json
       })
     }
   }
