@@ -16,7 +16,7 @@ import configService from '../services/config'
 
 const NavBar = ({ }) => {
 
-  let config = useSelector((state) => state.config)
+  let config = useSelector((state) => state.config.content)
   let configUrl = useSelector((state) => state.urls.configUrl)
 
   const handleSend = (e) => {

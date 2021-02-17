@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 const ConfigSection = ({ configSection }) => {
 
   
-  const config = useSelector((state) => state.config)
+  const config = useSelector((state) => state.config.content)
 
   const configKeys = Object.keys(config[configSection])
 

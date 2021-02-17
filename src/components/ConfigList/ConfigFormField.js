@@ -28,8 +28,9 @@ const ConfigFormField = ({ name, currentFieldValue, currentSection }) => {
       ...formField,
       [name]: newFormField,
     })
-    config[currentSection][name] = newFormField
+    console.log(config)
 
+    config.content[currentSection][name] = newFormField
     dispatch(updateConfig(config))
 
   }

@@ -20,15 +20,44 @@ const configReducer = (state = [], action) => {
 }
 
 
+// export const initializeConfig = (configUrl) => {
+//   return async dispatch => {
+//     if (configUrl == 'dummy_config') {
+//       dispatch({
+//         type: 'SET_CONFIG',
+//         data: dummy_config
+//       })
+//     } else {
+//       const config = await configService.getConfig(configUrl)
+//       dispatch({
+//         type: 'SET_CONFIG',
+//         data: config
+//       })
+//     }
+//   }
+// }
+
 export const initializeConfig = (configUrl) => {
   return async dispatch => {
     if (configUrl == 'dummy_config') {
+
+      const config = {
+        content: dummy_config,
+        couter: 0
+      }
+
       dispatch({
         type: 'SET_CONFIG',
-        data: dummy_config
+        data: config
       })
     } else {
-      const config = await configService.getConfig(configUrl)
+      const config_json = await configService.getConfig(configUrl)
+
+      const config = {
+        content: config_json,
+        couter: 0
+      }
+
       dispatch({
         type: 'SET_CONFIG',
         data: config
@@ -36,34 +65,6 @@ export const initializeConfig = (configUrl) => {
     }
   }
 }
-
-// export const initializeConfig = (configUrl) => {
-//   return async dispatch => {
-//     if (configUrl == 'dummy_config') {
-
-//       const config = {
-//         content: dummy_config,
-//         couter: 0
-//       }
-
-//       dispatch({
-//         type: 'SET_CONFIG',
-//         data: config
-//       })
-//     } else {
-//       const config_json = await configService.getConfig(configUrl)
-
-//       const config = {
-//         content: config_json,
-//         couter: 0
-//       }
-
-//       dispatch({
-//         type: 'SET_CONFIG',
-//         data: config
-//       })
-//     }
-
 
 export const updateConfig = (config) => {
   return async dispatch => {

@@ -8,10 +8,12 @@ import { useSelector } from 'react-redux'
 
 
 // return a list of input fields dynamically based on the keys of the received config.json file
-const ConfigList = ({ setConfig }) => {
+const ConfigList = ({ }) => {
 
-  let config = useSelector((state) => state.config)
+  let config = useSelector((state) => state.config.content)
   let configUrl = useSelector((state) => state.urls.configUrl)
+
+  console.log(config)
 
   // get section keys for rendering sections
   let configSections = Object.keys(config)
