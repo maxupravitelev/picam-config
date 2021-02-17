@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux'
 const CamPosition = ({  }) => {
 
   let positionUrl = useSelector((state) => state.urls.positionUrl)
-  console.log(positionUrl)
 
 
   const setCameraLeft = (steps=15) => {

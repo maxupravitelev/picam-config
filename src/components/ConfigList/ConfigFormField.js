@@ -9,7 +9,9 @@ const ConfigFormField = ({ name, currentFieldValue, currentSection }) => {
   const [formField, setFormField] = useState(currentFieldValue)
 
   const dispatch = useDispatch()
-  let config = useSelector((state) => state.config)
+  
+  let counter = useSelector((state) => state.config.length)
+  let config = useSelector((state) => state.config[counter - 1])
 
   let formFieldType = 'text'
 
@@ -21,16 +23,17 @@ const ConfigFormField = ({ name, currentFieldValue, currentSection }) => {
     let newFormField = e.target.value
 
     if (typeof currentFieldValue == 'number') {
-      newFormField = parseInt(newFormField)
+      newFormField = parseFloat(newFormField)
     }
 
-    setFormField({
+    let updatedFormField = {
       ...formField,
       [name]: newFormField,
-    })
-    console.log(config)
+    }
 
-    config.content[currentSection][name] = newFormField
+    setFormField(updatedFormField)
+
+    config[currentSection][name] = newFormField
     dispatch(updateConfig(config))
 
   }

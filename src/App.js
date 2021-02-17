@@ -66,7 +66,7 @@ const App = () => {
         </Grid>
 
         <Grid item xs={4} sm={4} zeroMinWidth>
-          <ConfigList config={config} configUrl={configUrl} setConfig={setConfig} />
+          <ConfigList />
         </Grid>
 
         <Grid item xs={4} sm={4} >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Table, TableBody, TableCell, TableContainer, TableRow, Paper, } from '@material-ui/core'
 import ConfigFormField from './ConfigFormField'
 import ConfigFormFieldSelect from './ConfigFormFieldSelect'
@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux'
 const ConfigSection = ({ configSection }) => {
 
   
-  const config = useSelector((state) => state.config.content)
-
+  let counter = useSelector((state) => state.config.length)
+  let config = useSelector((state) => state.config[counter - 1])
   const configKeys = Object.keys(config[configSection])
 
 
