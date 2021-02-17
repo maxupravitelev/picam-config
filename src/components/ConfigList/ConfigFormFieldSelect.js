@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Typography, MenuItem, Select, InputLabel } from '@material-ui/core'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { updateConfig } from '../../reducers/configReducer'
+
+
+
 const ConfigFormFieldSelect = ({
   name,
   currentFieldObject,
-  setConfig,
-  currentSection,
-  config,
+  currentSection
 }) => {
 
   const [formField, setFormField] = useState(currentFieldObject)
@@ -15,6 +18,11 @@ const ConfigFormFieldSelect = ({
     text: "",
 
   });
+
+  let counter = useSelector((state) => state.config.length)
+  let config = useSelector((state) => state.config[counter - 1])
+
+  const dispatch = useDispatch()
 
 
   const handleChange = (e) => {
@@ -28,7 +36,7 @@ const ConfigFormFieldSelect = ({
     // console.log(config[currentSection][name])
     config[currentSection][name]['set'] = newFormField
 
-    setConfig(config)
+    dispatch(updateConfig(config))
   }
 
 

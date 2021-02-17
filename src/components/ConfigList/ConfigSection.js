@@ -42,7 +42,6 @@ const ConfigSection = ({ configSection }) => {
                     <TableCell>{key}</TableCell>
                     <TableCell>
                       <ConfigFormField
-                        config={config}
                         currentFieldValue={config[configSection][key]}
                         currentSection={configSection}
                         name={key}
