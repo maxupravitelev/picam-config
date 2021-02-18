@@ -29,4 +29,3 @@ The app is currently in prototype stage with basic functionality. The next steps
 - dynamically add and remove custom input fields to Picam configuration
 - create profiles 
 - generate raspivid cli commands based on config settings
-- Optimization (setting up state management with Redux etc.)

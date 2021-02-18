@@ -14,7 +14,7 @@ body {
   /* margin: auto; */
   /* border: 3px solid; */
   text-align: center;
-  font-size: 2.7vmin;
+  /* font-size: 2.7vmin; */
   
 }
 
@@ -105,3 +105,8 @@ button:hover {
   opacity: 0.9;
 }
 
+p {
+  padding: 0em;
+  font-size: 100%;
+  width: 80%;
+}

@@ -16,10 +16,15 @@ import './App.css'
 
 import Grid from '@material-ui/core/Grid';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+
 
 const App = () => {
 
   let streamUrl = useSelector((state) => state.urls.streamUrl)
+
+  const checkScreenWidth = useMediaQuery('(max-width:600px)');
+
 
   // return url form if stream is not set yet
   if (!streamUrl)
@@ -28,32 +33,44 @@ const App = () => {
         <Grid >
           <Header />
         </Grid>
-        <Grid > 
+        <Grid >
           <UrlForm />
         </Grid>
       </Grid >
     )
 
   else {
-    return (
-      <Grid container spacing={2} justify="center" alignItems="center">
-        {/* <Grid item xs={12} sm={9} zeroMinWidth>
-          <Header />
-        </Grid> */}
-        <Grid item xs={4} sm={4} zeroMinWidth>
+    if (!checkScreenWidth) {
+      return (
+        <Grid container spacing={2} justify="center" alignItems="center">
+          {/* <Grid item xs={12} sm={9} zeroMinWidth>
+            <Header />
+          </Grid> */}
+          <Grid item xs={4} sm={4} zeroMinWidth>
             <Capture streamUrl={streamUrl} />
-        </Grid>
+          </Grid>
 
-        <Grid item xs={4} sm={4} zeroMinWidth>
+          <Grid item xs={4} sm={4} zeroMinWidth>
+            <ConfigList />
+          </Grid>
+
+          <Grid item xs={4} sm={4} >
+            <NavBar />
+          </Grid>
+        </Grid>
+      )
+    } else {
+      return (
+        <div>
+          <Capture streamUrl={streamUrl} />
           <ConfigList />
-        </Grid>
-
-        <Grid item xs={4} sm={4} >
           <NavBar />
-        </Grid>
-      </Grid>
-    )
+        </div>
+      )
+    }
   }
+
+
 }
 
 export default App

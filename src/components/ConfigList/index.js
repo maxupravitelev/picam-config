@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 // return a list of input fields dynamically based on the keys of the received config.json file
 const ConfigList = ({ }) => {
 
+
   let counter = useSelector((state) => state.config.length)
   let config = useSelector((state) => state.config[counter - 1])
   let configUrl = useSelector((state) => state.urls.configUrl)

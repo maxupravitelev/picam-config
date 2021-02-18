@@ -22,7 +22,7 @@ const NavBar = ({ }) => {
   let counter = useSelector((state) => state.config.length)
   let config = useSelector((state) => state.config[counter - 1])
   const firstConfig = useSelector((state) => state.config[0])
-  console.log(firstConfig)
+  // console.log(firstConfig)
   let configUrl = useSelector((state) => state.urls.configUrl)
 
   const dispatch = useDispatch()
@@ -54,7 +54,6 @@ const NavBar = ({ }) => {
         <FindInPageIcon />
       </Button>
       <Typography variant='caption'>view file</Typography>
-
       <Button onClick={handleBackup}type="submit" variant="outlined">
         <RestoreIcon />
       </Button>
