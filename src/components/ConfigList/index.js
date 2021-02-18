@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from 'react'
+// import react and redux
+import React from 'react'
+import { useSelector } from 'react-redux'
+
+// import backend service
 import configService from '../../services/config'
+
+// import material ui components
 import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import ConfigSection from './ConfigSection'
 
-import { useSelector } from 'react-redux'
+// import components
+import ConfigSection from './ConfigSection'
 
 
 // return a list of input fields dynamically based on the keys of the received config.json file
 const ConfigList = ({ }) => {
 
-
+  // fetch config from store
   let counter = useSelector((state) => state.config.length)
   let config = useSelector((state) => state.config[counter - 1])
   let configUrl = useSelector((state) => state.urls.configUrl)
 
   if (!config) return <div></div>
+
   // get section keys for rendering sections
   let configSections = Object.keys(config)
 

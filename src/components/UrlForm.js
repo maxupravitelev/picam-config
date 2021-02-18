@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 // import material ui
 import { TextField, Button, Typography } from '@material-ui/core'
 
-
 // init redux and import reducers
 import { useDispatch } from 'react-redux'
 import { initializeConfig } from '../reducers/configReducer'

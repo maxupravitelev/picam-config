@@ -8,25 +8,26 @@ import { useSelector } from 'react-redux'
 import UrlForm from './components/UrlForm'
 import ConfigList from './components/ConfigList'
 import Header from './components/Header'
-import Capture from './components/Capture'
+import Capture from './components/Cam/Capture'
 import NavBar from './components/NavBar'
 
 // import css and material ui components
 import './App.css'
-
 import Grid from '@material-ui/core/Grid';
 
+// use media query to determine screen size
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 
 const App = () => {
 
+  // fetch streamUrl from store to check if setting up url is necessary
   let streamUrl = useSelector((state) => state.urls.streamUrl)
 
+  // determine screen size
   const checkScreenWidth = useMediaQuery('(max-width:600px)');
 
-
-  // return url form if stream is not set yet
+  // return url form if streamUrl is not set yet
   if (!streamUrl)
     return (
       <Grid container direction="column" alignItems="center" spacing={1} justify="center" >
@@ -40,6 +41,7 @@ const App = () => {
     )
 
   else {
+    // render main app based on screen size
     if (!checkScreenWidth) {
       return (
         <Grid container spacing={2} justify="center" alignItems="center">
@@ -47,7 +49,7 @@ const App = () => {
             <Header />
           </Grid> */}
           <Grid item xs={4} sm={4} zeroMinWidth>
-            <Capture streamUrl={streamUrl} />
+            <Capture />
           </Grid>
 
           <Grid item xs={4} sm={4} zeroMinWidth>
@@ -62,7 +64,7 @@ const App = () => {
     } else {
       return (
         <div>
-          <Capture streamUrl={streamUrl} />
+          <Capture />
           <ConfigList />
           <NavBar />
         </div>

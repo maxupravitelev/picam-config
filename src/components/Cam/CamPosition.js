@@ -1,5 +1,5 @@
 import React from 'react'
-import configService from '../services/config'
+import configService from '../../services/config'
 import { Button, Typography } from '@material-ui/core'
 
 import { useSelector } from 'react-redux'

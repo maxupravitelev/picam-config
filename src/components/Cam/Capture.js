@@ -1,6 +1,6 @@
 import React from 'react'
-import dummy from '../demo_mode/dummy.gif'
-import CamPosition from '../components/CamPosition'
+import dummy from '../../demo_mode/dummy.gif'
+import CamPosition from './CamPosition'
 
 import { useSelector } from 'react-redux'
 

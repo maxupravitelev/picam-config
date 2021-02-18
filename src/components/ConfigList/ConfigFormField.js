@@ -13,8 +13,6 @@ const ConfigFormField = ({ name, currentFieldValue, currentSection }) => {
   let counter = useSelector((state) => state.config.length)
   let config = useSelector((state) => state.config[counter - 1])
 
-  
-  
   let formFieldType = 'text'
 
   if (typeof currentFieldValue == 'number') {

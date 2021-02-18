@@ -1,16 +1,12 @@
 import React, { useState } from 'react'
-import { Typography, MenuItem, Select, InputLabel } from '@material-ui/core'
+import { MenuItem, Select, InputLabel } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { updateConfig } from '../../reducers/configReducer'
 
 
 
-const ConfigFormFieldSelect = ({
-  name,
-  currentFieldObject,
-  currentSection
-}) => {
+const ConfigFormFieldSelect = ({ name, currentFieldObject, currentSection }) => {
 
   const [formField, setFormField] = useState(currentFieldObject)
 

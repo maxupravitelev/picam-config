@@ -1,6 +1,7 @@
 import React from 'react'
-import { Typography, Paper } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 
+// return header component
 const Header = () => {
   return (
     <div className="header">

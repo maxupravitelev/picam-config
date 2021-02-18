@@ -1,27 +1,24 @@
 // import react & redux
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { restoreConfig } from '../reducers/configReducer'
 
+// import material ui components
 import { Button, Typography } from '@material-ui/core'
-
 import RestoreIcon from '@material-ui/icons/Restore';
 import SendIcon from '@material-ui/icons/Send';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
 
-
 // import backend service
 import configService from '../services/config'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { restoreConfig } from '../reducers/configReducer'
-
-
-import { Table, TableBody, TableCell, TableContainer, TableRow } from '@material-ui/core'
-
+// use media query to determine screen size
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-
+// return navigation component
 const NavBar = ({ }) => {
 
+  // determine screen size
   const checkScreenWidth = useMediaQuery('(max-width:600px)');
 
   let urls = useSelector(state => state.urls)
@@ -33,7 +30,6 @@ const NavBar = ({ }) => {
   let configUrl = useSelector((state) => state.urls.configUrl)
 
   const dispatch = useDispatch()
-
 
   const handleSend = (e) => {
     e.preventDefault()
