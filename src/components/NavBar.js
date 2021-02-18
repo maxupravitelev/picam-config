@@ -15,7 +15,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { restoreConfig } from '../reducers/configReducer'
 
 
+import { Table, TableBody, TableCell, TableContainer, TableRow } from '@material-ui/core'
+
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+
+
 const NavBar = ({ }) => {
+
+  const checkScreenWidth = useMediaQuery('(max-width:600px)');
 
   let urls = useSelector(state => state.urls)
 
@@ -48,23 +55,56 @@ const NavBar = ({ }) => {
 
   }
 
-  return (
-    <div className="navbar">
-      <Button href={configUrl} variant="outlined">
-        <FindInPageIcon />
-      </Button>
-      <Typography variant='caption'>view file</Typography>
-      {/* <Button onClick={handleBackup}type="submit" variant="outlined">
-        <RestoreIcon />
-      </Button> */}
-      {/* <Typography variant='caption'>restore</Typography> */}
-      <Button onClick={handleSend} type="submit" variant="outlined">
-        <SendIcon />
-      </Button>
-      <Typography variant='caption'>send</Typography>
+  if (!checkScreenWidth) {
+    return (
+      <div className="navbar">
+        <Button href={configUrl} variant="outlined">
+          <FindInPageIcon />
+        </Button>
+        <Typography variant='caption'>view file</Typography>
+        {/* <Button onClick={handleBackup}type="submit" variant="outlined">
+          <RestoreIcon />
+        </Button> */}
+        {/* <Typography variant='caption'>restore</Typography> */}
+        <Button onClick={handleSend} type="submit" variant="outlined">
+          <SendIcon />
+        </Button>
+        <Typography variant='caption'>send</Typography>
 
-    </div>
-  )
+      </div>
+    )
+  }
+  else {
+    return (
+      <div className="navbar">
+        <table>
+        <tbody>
+          <tr>
+            <td>
+              <Button href={configUrl} variant="outlined">
+                <FindInPageIcon />
+              </Button>
+            </td>
+            <td>
+              <Button onClick={handleSend} type="submit" variant="outlined">
+                <SendIcon />
+              </Button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Typography variant='caption'>view file</Typography>
+            </td>
+            <td>
+              <Typography variant='caption'>send</Typography>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
 }
 
 export default NavBar

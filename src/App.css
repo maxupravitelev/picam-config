@@ -39,6 +39,11 @@ body {
     justify-content: space-between;
     max-width: 100%;
   }
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
 
 .urlForm {
@@ -51,7 +56,7 @@ body {
 .camPosition {
   text-align: center;
   display: block;
-  justify-content: space-between;
+  justify-content:flex-end;
   background-color: rgb(245, 244, 244);
 }
 
