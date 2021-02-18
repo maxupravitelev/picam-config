@@ -33,6 +33,14 @@ body {
   max-width: 17%;
 }
 
+@media screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+}
+
 .urlForm {
   margin-top: 1em;
   text-align: center;
@@ -87,7 +95,7 @@ img {
 } */
 
 input {
-  width: 100%
+  width: 70px;
 }
 
 /* form {
@@ -106,7 +114,9 @@ button:hover {
 }
 
 p {
-  padding: 0em;
-  font-size: 100%;
-  width: 80%;
+  text-align: center;
+}
+
+.MuiTableCell-sizeSmall:last-child {
+  padding-right: 5vmin;
 }

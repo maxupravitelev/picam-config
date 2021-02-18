@@ -54,10 +54,10 @@ const NavBar = ({ }) => {
         <FindInPageIcon />
       </Button>
       <Typography variant='caption'>view file</Typography>
-      <Button onClick={handleBackup}type="submit" variant="outlined">
+      {/* <Button onClick={handleBackup}type="submit" variant="outlined">
         <RestoreIcon />
-      </Button>
-      <Typography variant='caption'>restore</Typography>
+      </Button> */}
+      {/* <Typography variant='caption'>restore</Typography> */}
       <Button onClick={handleSend} type="submit" variant="outlined">
         <SendIcon />
       </Button>
