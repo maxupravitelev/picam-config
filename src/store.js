@@ -5,10 +5,12 @@ import thunk from 'redux-thunk'
 
 import configReducer from './reducers/configReducer'
 import urlReducer from './reducers/urlReducer'
+import notificationReducer from './reducers/notificationReducer'
 
 const reducer = combineReducers({
   config: configReducer,
-  urls: urlReducer
+  urls: urlReducer,
+  notification: notificationReducer
 })
 
 const store = createStore(

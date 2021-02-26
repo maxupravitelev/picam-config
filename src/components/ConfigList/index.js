@@ -6,16 +6,19 @@ import { useSelector } from 'react-redux'
 import configService from '../../services/config'
 
 // import material ui components
-import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core'
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 // import components
 import ConfigSection from './ConfigSection'
-
+import Notification from '../../components/Notification'
 
 // return a list of input fields dynamically based on the keys of the received config.json file
-const ConfigList = ({ }) => {
-
+const ConfigList = ({}) => {
   // fetch config from store
   let counter = useSelector((state) => state.config.length)
   let config = useSelector((state) => state.config[counter - 1])
@@ -26,7 +29,6 @@ const ConfigList = ({ }) => {
   // get section keys for rendering sections
   let configSections = Object.keys(config)
 
-
   // if (!configSections) return <div></div>
 
   const handleSubmit = (e) => {
@@ -35,9 +37,9 @@ const ConfigList = ({ }) => {
     configService.setConfig(configUrl, config)
   }
 
-  
   return (
     <div className="configList">
+      <Notification />
 
       <form onSubmit={handleSubmit}>
         {configSections.map((sectionKey, index) => (
@@ -50,10 +52,7 @@ const ConfigList = ({ }) => {
               <p>{sectionKey}</p>
             </AccordionSummary>
             <AccordionDetails>
-              <ConfigSection
-                config={config}
-                configSection={sectionKey}
-              />
+              <ConfigSection config={config} configSection={sectionKey} />
             </AccordionDetails>
           </Accordion>
         ))}

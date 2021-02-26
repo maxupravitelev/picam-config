@@ -7,6 +7,7 @@ import { TextField, Button, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { initializeConfig } from '../reducers/configReducer'
 import {  setUrls } from '../reducers/urlReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 
 const UrlForm = ({  }) => {
@@ -42,7 +43,7 @@ const UrlForm = ({  }) => {
 
     dispatch(initializeConfig(dummy_values.configUrl))
     dispatch(setUrls(dummy_values))
-
+    dispatch(setNotification(`'${dummy_values.configUrl}' was set, demo mode started`, 3, 'green'))
   }
 
   return (
