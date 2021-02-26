@@ -29,6 +29,11 @@ const NavBar = ({ }) => {
   // console.log(firstConfig)
   let configUrl = useSelector((state) => state.urls.configUrl)
 
+  if (configUrl = 'dummy_config') {
+    configUrl = '/config.json'
+  }
+  console.log(configUrl)
+
   const dispatch = useDispatch()
 
   const handleSend = (e) => {
