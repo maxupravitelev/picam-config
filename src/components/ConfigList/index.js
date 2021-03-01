@@ -17,6 +17,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ConfigSection from './ConfigSection'
 import Notification from '../../components/Notification'
 
+// import utils
+import { parseConfigSectionTitle } from '../../utils'
+
 // return a list of input fields dynamically based on the keys of the received config.json file
 const ConfigList = ({}) => {
   // fetch config from store
@@ -49,7 +52,7 @@ const ConfigList = ({}) => {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <p>{sectionKey}</p>
+              <p>{parseConfigSectionTitle(sectionKey)}</p>
             </AccordionSummary>
             <AccordionDetails>
               <ConfigSection config={config} configSection={sectionKey} />
